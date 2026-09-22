@@ -14,19 +14,23 @@
       --bg-page:#f1f6f8; --bg-card:#ffffff; --surface:#f5f9fb; --surface-2:#eaf1f4;
       --text-primary:#0a1a1f; --text-secondary:#2a424a; --text-muted:#667b83;
       --border-light:#d0dfe4; --accent:#0abf9f; --accent-dark:#047a65; --accent-soft:#ddf5ef;
-      --success:#0b9f79; --success-soft:#e3f5ef; --warning:#b7791f; --warning-soft:#fff8e6; --danger:#b33838; --danger-soft:#fff0f0;
+      --success:#0b9f79; --success-soft:#e3f5ef;
+      --warning:#b7791f; --warning-soft:#fff8e6;
+      --danger:#ef4444; --danger-soft:#fee2e2; --danger-ink:#991b1b;
       --shadow-sm:0 2px 8px rgba(10,30,36,.04); --shadow-md:0 8px 24px rgba(10,30,36,.08); --shadow-lg:0 20px 48px rgba(10,30,36,.12);
     }
     .dark{ --bg-page:#0b1419; --bg-card:#15242b; --surface:#1a2d35; --surface-2:#1f333c;
       --text-primary:#eaf3f5; --text-secondary:#b8ccd2; --text-muted:#799097;
       --border-light:#2b4450; --accent:#09b596; --accent-dark:#04997d; --accent-soft:#133d35;
-      --success:#1db892; --success-soft:#10362e; --warning:#d4a149; --warning-soft:#33290f; --danger:#d45a5a; --danger-soft:#3a1c1c;
+      --success:#1db892; --success-soft:#10362e;
+      --warning:#d4a149; --warning-soft:#33290f;
+      --danger:#f87171; --danger-soft:#3a1a1a; --danger-ink:#fca5a5;
       --shadow-sm:0 2px 8px rgba(0,0,0,.3); --shadow-md:0 8px 24px rgba(0,0,0,.4); --shadow-lg:0 20px 48px rgba(0,0,0,.5);
     }
     html{scroll-behavior:smooth}
     body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 15% 0%,rgba(10,191,159,.06),transparent 30%),var(--bg-page);color:var(--text-primary);padding:24px 16px;min-height:100vh;transition:background .3s}
     button,input,textarea{font:inherit}
-    .app-shell{max-width:1260px;margin:0 auto}
+    .app-shell{max-width:min(96vw, 1260px);margin:0 auto}
     .card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:32px;box-shadow:var(--shadow-sm);overflow:hidden;animation:pageIn .5s cubic-bezier(.16,.8,.2,1)}
     @keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
     .card-header{position:relative;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);background:linear-gradient(135deg,#04685a,#0abf9f);color:#fff;overflow:hidden}
@@ -39,14 +43,8 @@
     .header-actions{position:relative;z-index:1;display:flex;align-items:center;gap:8px}
     .theme-toggle{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:background .2s,transform .15s;font-size:16px}
     .theme-toggle:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
-    .card-body{padding:22px 28px 28px}
-    .workspace-top{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:16px}
-    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark)}
-    .workspace-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:2px;color:var(--text-primary)}
-    .workspace-subtitle{font-size:13px;color:var(--text-muted);margin-top:4px;font-weight:400}
-    .mode-pill{padding:6px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent-dark);font-size:11px;font-weight:700;border:1px solid rgba(10,191,159,.15);white-space:nowrap}
 
-    /* ---------- POINT 8: Document Picture-in-Picture ---------- */
+    /* PiP button */
     .pip-btn{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:12px;
       background:rgba(255,255,255,.08);color:#fff;cursor:pointer;
       transition:background .2s,transform .15s;font-size:16px;display:grid;place-items:center}
@@ -56,6 +54,7 @@
     .pip-btn.pip-unsupported{opacity:.4;cursor:not-allowed}
     .pip-btn.pip-unsupported:hover{background:rgba(255,255,255,.08);transform:none}
 
+    /* Placeholder shown in the opener tab while #app floats */
     .pip-placeholder{display:flex;align-items:center;justify-content:center;
       min-height:240px;padding:48px 24px;border:2px dashed var(--border-light);
       border-radius:32px;background:var(--bg-card);text-align:center}
@@ -67,7 +66,14 @@
     .pip-placeholder-title{font-size:16px;font-weight:700;color:var(--text-primary)}
     .pip-placeholder-sub{font-size:12px;color:var(--text-muted);line-height:1.6}
 
-    /* ---------- DETECTION BAR ---------- */
+    .card-body{padding:22px 28px 28px}
+    .workspace-top{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:16px}
+    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark)}
+    .workspace-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:2px;color:var(--text-primary)}
+    .workspace-subtitle{font-size:13px;color:var(--text-muted);margin-top:4px;font-weight:400}
+    .mode-pill{padding:6px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent-dark);font-size:11px;font-weight:700;border:1px solid rgba(10,191,159,.15);white-space:nowrap}
+
+    /* Detection bar */
     .detect-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:18px;border:1px solid var(--border-light);background:var(--surface);margin-bottom:14px;transition:border-color .25s,background .25s,box-shadow .25s}
     .detect-bar[data-confidence="high"]{border-color:var(--success);background:var(--success-soft);box-shadow:var(--shadow-sm)}
     .detect-bar[data-confidence="medium"]{border-color:var(--warning);background:var(--warning-soft)}
@@ -82,12 +88,11 @@
     .detect-action{border:1px solid var(--accent);background:var(--bg-card);color:var(--accent-dark);border-radius:10px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer;flex-shrink:0;transition:background .2s,color .2s}
     .detect-action:hover{background:var(--accent);color:#fff}
 
-    /* ---------- TABS ---------- */
+    /* Tabs — wrap kicks in at <=750px */
     .tabs-wrap{margin-bottom:16px}
     .tabs-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:6px}
     .tabs{display:flex;gap:6px;overflow:auto;padding:4px;border:1px solid var(--border-light);background:var(--surface);border-radius:16px;transition:background .2s;position:relative}
     .tabs.overflowing::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;pointer-events:none;background:linear-gradient(to right,transparent,var(--surface));border-radius:0 16px 16px 0}
-    @media(max-width:700px){.tabs{flex-wrap:wrap;overflow:visible;padding:6px}.tabs.overflowing::after{display:none}}
     .tab{flex:0 0 auto;border:0;background:transparent;color:var(--text-muted);padding:10px 16px;border-radius:12px;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s,transform .15s;position:relative}
     .tab:hover{background:var(--bg-card);color:var(--text-primary)}
     .tab[aria-selected=true]{background:var(--bg-card);color:var(--accent-dark);box-shadow:var(--shadow-sm)}
@@ -95,7 +100,7 @@
     .dark .tab[aria-selected=true]::after{background:linear-gradient(90deg,#09b596,#04997d)}
     .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-    /* ---------- QUEUE ---------- */
+    /* Queue */
     .queue-panel{margin-bottom:16px;padding:0}
     .queue-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px 10px}
     .queue-title{font-size:13px;font-weight:700;color:var(--text-primary)}
@@ -115,7 +120,7 @@
     .icon-btn{border:1px solid var(--border-light);background:var(--bg-card);color:var(--text-muted);width:24px;height:24px;border-radius:8px;display:grid;place-items:center;font-size:12px;line-height:1;cursor:pointer;flex-shrink:0;transition:background .2s,color .2s,border-color .2s}
     .icon-btn:hover{background:var(--surface-2);color:var(--text-primary)}
 
-    /* ---------- MAIN GRID ---------- */
+    /* Main grid */
     .main-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:20px}
     .panel{border:1px solid var(--border-light);border-radius:24px;background:var(--bg-card);overflow:visible;box-shadow:var(--shadow-sm)}
     .panel-head{padding:14px 18px 8px;display:flex;justify-content:space-between;align-items:center}
@@ -138,16 +143,19 @@
     .analysis-status{margin:4px 18px 10px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;gap:14px;transition:border-color .3s,background .3s,box-shadow .3s;box-shadow:var(--shadow-sm)}
     .analysis-status[data-state=ready]{border-color:var(--success);background:var(--success-soft);box-shadow:var(--shadow-md)}
     .analysis-status[data-state=review]{border-color:var(--warning);background:var(--warning-soft);box-shadow:var(--shadow-md)}
+    .analysis-status[data-state=critical]{border-color:var(--danger);background:var(--danger-soft);box-shadow:var(--shadow-md)}
     .status-left{display:flex;align-items:center;gap:12px}
     .status-dot{width:22px;height:22px;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:800;background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border-light);flex-shrink:0;transition:background .3s,color .3s,border-color .3s}
     .analysis-status[data-state=waiting] .status-dot{background:var(--surface-2);color:var(--text-muted)}
     .analysis-status[data-state=review] .status-dot{background:var(--warning);border-color:var(--warning);color:#fff}
+    .analysis-status[data-state=critical] .status-dot{background:var(--danger);border-color:var(--danger);color:#fff}
     .analysis-status[data-state=ready] .status-dot{background:var(--success);border-color:var(--success);color:#fff}
     .detection-name{font-size:13px;font-weight:700}
     .detection-meta{font-size:10px;color:var(--text-muted);margin-top:2px}
     .confidence{font-size:10px;font-weight:700;transition:color .3s}
     .analysis-status[data-state=ready] .confidence{color:var(--success)}
     .analysis-status[data-state=review] .confidence{color:var(--warning)}
+    .analysis-status[data-state=critical] .confidence{color:var(--danger-ink)}
 
     .summary{padding:0 18px 14px}
     .summary-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--text-muted);margin-bottom:8px}
@@ -156,14 +164,17 @@
     .summary-item.visible{opacity:1;transform:translateY(0)}
     .summary-item strong{margin-left:auto;font-size:9px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:45%}
     .summary-item.ok strong{color:var(--success)}
-    .summary-item.missing strong{color:var(--danger)}
+    .summary-item.missing strong{color:var(--danger-ink)}
     .summary-item.review strong{color:var(--warning)}
+    .summary-item.critical strong{color:var(--danger-ink)}
     .summary-item.review{border-color:var(--warning)}
     .summary-item.missing{border-color:var(--danger)}
+    .summary-item.critical{border-color:var(--danger);background:var(--danger-soft)}
     .summary-status{width:17px;height:17px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:900;flex-shrink:0;border:1.5px solid currentColor;line-height:1}
     .summary-item.ok .summary-status{color:var(--success)}
     .summary-item.review .summary-status{color:var(--warning)}
     .summary-item.missing .summary-status{color:var(--danger)}
+    .summary-item.critical .summary-status{color:var(--danger)}
     .summary-empty{font-size:11px;color:var(--text-muted);padding:6px 0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -181,8 +192,7 @@
     .help-icon.open .tooltip{visibility:visible;opacity:1;transform:translateX(-50%) translateY(0)}
     .field input{padding:9px 12px;font-size:12px;background:var(--bg-card);border-radius:12px}
     .field-msg{font-size:9px;color:var(--danger);min-height:14px}
-    .input.error{border-color:var(--danger);background:#fff5f5}
-    .dark .input.error{background:#3a1c1c}
+    .input.error{border-color:var(--danger);background:var(--danger-soft)}
     .input-with-action{position:relative;display:flex}
     .input-with-action input{padding-right:38px}
     .field-paste-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:9px;border:1px solid var(--border-light);background:var(--surface);color:var(--text-muted);cursor:pointer;font-size:12px;display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
@@ -193,10 +203,9 @@
     .banner{margin:0 18px 10px;padding:10px 14px;border-radius:14px;font-size:10px;opacity:0;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,max-height .3s ease,padding .25s ease,margin .25s ease;max-height:0;overflow:hidden;visibility:hidden}
     .banner.show{opacity:1;transform:translateY(0);max-height:300px;visibility:visible;padding:10px 14px;margin:0 18px 10px}
     .banner ul{margin:4px 0 0 16px}
-    .banner.error{background:var(--danger-soft);border:1px solid #f4b4b4;color:#9b2c2c}
-    .dark .banner.error{color:#f0a0a0;border-color:#5c2a2a}
     .banner.warn{background:var(--warning-soft);border:1px solid #f2d38a;color:#8a650d}
     .dark .banner.warn{color:#e5c37a;border-color:#5c4a1e}
+    .banner.error,.banner.critical{background:var(--danger-soft);border:1px solid var(--danger);color:var(--danger-ink)}
     .preview{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
     .chip{font:10px monospace;background:var(--surface);border:1px solid var(--border-light);border-radius:8px;padding:3px 8px;color:var(--text-secondary);transition:background .2s,border-color .2s,color .2s}
     .chip b{color:var(--accent-dark)}
@@ -217,8 +226,7 @@
     .kbd-hint{padding:8px 18px 0;font-size:10px;color:var(--text-muted)}
     kbd{padding:2px 6px;border:1px solid var(--border-light);border-radius:5px;background:var(--surface);font-size:10px}
 
-    .inline-confirm{display:none;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 18px 0;padding:10px 14px;border-radius:14px;background:var(--danger-soft);border:1px solid #f4b4b4;font-size:11px;color:var(--text-secondary)}
-    .dark .inline-confirm{border-color:#5c2a2a}
+    .inline-confirm{display:none;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 18px 0;padding:10px 14px;border-radius:14px;background:var(--danger-soft);border:1px solid var(--danger);font-size:11px;color:var(--text-secondary)}
     .inline-confirm.show{display:flex}
     .inline-confirm .spacer{flex:1}
 
@@ -275,8 +283,140 @@
     .empty-state{color:var(--text-muted);font-size:12px;display:flex;align-items:center;gap:8px;padding:4px 0}
     .empty-state .icon{font-size:16px;opacity:.5}
 
+    /* ---------- Responsive base ---------- */
     @media(max-width:850px){.main-grid{grid-template-columns:1fr}.analysis-panel{min-height:0}}
+    @media(max-width:750px){.tabs{flex-wrap:wrap;overflow:visible;padding:6px}.tabs.overflowing::after{display:none}}
     @media(max-width:600px){body{padding:10px}.card-header{padding:16px 18px}.card-body{padding:16px 14px}.workspace-title{font-size:22px}.field-summary{grid-template-columns:1fr}.action-bar{flex-wrap:wrap}.primary-btn{flex:1}.main-grid{gap:14px}}
+
+    /* ---------- Wide-screen layout (>=1400px) ---------- */
+    @media (min-width:1400px){
+      .app-shell{max-width:min(96vw, 1500px)}
+      .card-body{
+        display:grid;
+        grid-template-columns: 340px minmax(0, 1fr);
+        grid-template-areas:
+          "head    head"
+          "detect  detect"
+          "tabs    tabs"
+          "queue   main"
+          "queue   confirm"
+          "queue   output"
+          "queue   history";
+        gap:18px;
+        align-items:start;
+      }
+      .card-body > .workspace-top{grid-area:head;margin-bottom:0}
+      .card-body > .detect-bar{grid-area:detect;margin-bottom:0}
+      .card-body > .tabs-wrap{grid-area:tabs;margin-bottom:0}
+      .card-body > #queuePanel{grid-area:queue;margin-bottom:0}
+      .card-body > .main-grid{grid-area:main}
+      .card-body > #confirmBar{grid-area:confirm;margin-top:0}
+      .card-body > .output-panel{grid-area:output;margin-top:0}
+      .card-body > #historySection{grid-area:history;margin-top:0;padding-top:12px}
+    }
+    @media (min-width:1800px){
+      .app-shell{max-width:min(96vw, 1780px)}
+      .card-body{grid-template-columns: 380px minmax(0, 1fr)}
+    }
+
+    /* ---------- Compact PiP mode (highest priority; wins over media queries) ---------- */
+    html.pip-mode body{padding:6px}
+    html.pip-mode .card{border-radius:18px}
+    html.pip-mode .card-header{padding:10px 14px}
+    html.pip-mode .card-header:after{width:160px;height:160px;right:-60px;top:-90px}
+    html.pip-mode .brand{gap:10px}
+    html.pip-mode .brand-mark{width:30px;height:30px;border-radius:9px;font-size:14px}
+    html.pip-mode .brand h1{font-size:15px}
+    html.pip-mode .brand p{display:none}
+    html.pip-mode .theme-toggle,html.pip-mode .pip-btn{width:32px;height:32px;font-size:13px;border-radius:9px}
+    html.pip-mode .card-body{padding:10px 12px 14px}
+    html.pip-mode .workspace-top{margin-bottom:8px;align-items:center}
+    html.pip-mode .eyebrow{display:none}
+    html.pip-mode .workspace-title{font-size:14px;margin-top:0;line-height:1.3}
+    html.pip-mode .workspace-subtitle{display:none}
+    html.pip-mode .mode-pill{font-size:9px;padding:3px 9px}
+    html.pip-mode .detect-bar{padding:8px 10px;border-radius:12px;margin-bottom:8px;gap:8px}
+    html.pip-mode .detect-glyph{width:22px;height:22px;border-radius:7px;font-size:11px}
+    html.pip-mode .detect-title{font-size:11px}
+    html.pip-mode .detect-sub{font-size:9px}
+    html.pip-mode .detect-action{padding:4px 9px;font-size:9px;border-radius:8px}
+    html.pip-mode .tabs-wrap{margin-bottom:8px}
+    html.pip-mode .tabs-label{font-size:9px;margin-bottom:4px}
+    html.pip-mode .tabs{padding:3px;border-radius:12px;gap:4px}
+    html.pip-mode .tab{padding:6px 10px;font-size:10px;border-radius:8px}
+    html.pip-mode .queue-panel{margin-bottom:8px}
+    html.pip-mode .queue-head{padding:8px 12px 6px}
+    html.pip-mode .queue-title{font-size:11px}
+    html.pip-mode .queue-caption{display:none}
+    html.pip-mode .queue-list{padding:0 12px 10px;gap:4px}
+    html.pip-mode .queue-item{padding:6px 9px;border-radius:10px}
+    html.pip-mode .queue-index{width:16px;height:16px;border-radius:5px;font-size:9px}
+    html.pip-mode .queue-cat{font-size:9px}
+    html.pip-mode .queue-preview{font-size:8px}
+    html.pip-mode .mini-btn{padding:3px 7px;font-size:9px;border-radius:7px}
+    html.pip-mode .icon-btn{width:20px;height:20px;border-radius:6px;font-size:11px}
+    html.pip-mode .main-grid{gap:10px}
+    html.pip-mode .panel{border-radius:16px}
+    html.pip-mode .panel-head{padding:8px 12px 4px}
+    html.pip-mode .panel-title{font-size:11px}
+    html.pip-mode .panel-caption{display:none}
+    html.pip-mode .panel-icon{width:24px;height:24px;border-radius:7px}
+    html.pip-mode .panel-icon svg{width:14px;height:14px}
+    html.pip-mode .paste-section{padding:0 12px}
+    html.pip-mode .paste-header{margin:0 0 4px}
+    html.pip-mode .paste-header label{font-size:9px}
+    html.pip-mode .input-meta{font-size:9px}
+    html.pip-mode textarea#input{min-height:90px;padding:9px;font-size:11px;border-radius:11px}
+    html.pip-mode .preview{margin-top:5px;gap:4px}
+    html.pip-mode .chip{font-size:9px;padding:2px 6px;border-radius:6px}
+    html.pip-mode .parse-status{font-size:9px;margin-top:4px}
+    html.pip-mode .sla-info{margin:0 12px 8px;padding:7px 10px;font-size:10px;border-radius:11px}
+    html.pip-mode .dynamic-fields{margin:0 12px 8px;padding:8px 10px;border-radius:12px;gap:8px}
+    html.pip-mode .field label{font-size:9px}
+    html.pip-mode .field input{padding:7px 9px;font-size:11px;border-radius:9px}
+    html.pip-mode .field-msg{font-size:8px;min-height:10px}
+    html.pip-mode .help-icon{width:15px;height:15px;font-size:8px}
+    html.pip-mode .help-icon .tooltip{width:200px;font-size:9px}
+    html.pip-mode .field-paste-btn{width:22px;height:22px;font-size:10px;right:4px;border-radius:7px}
+    html.pip-mode .input-with-action input{padding-right:30px}
+    html.pip-mode .action-bar{padding:0 12px;gap:6px}
+    html.pip-mode .primary-btn,html.pip-mode .copy-only,html.pip-mode .btn-clear,html.pip-mode .danger-btn{padding:8px 12px;font-size:10px;border-radius:11px}
+    html.pip-mode .kbd-hint{display:none}
+    html.pip-mode .analysis-status{margin:0 12px 8px;padding:9px 11px;border-radius:12px;gap:10px}
+    html.pip-mode .status-dot{width:18px;height:18px;border-radius:6px;font-size:10px}
+    html.pip-mode .detection-name{font-size:11px}
+    html.pip-mode .detection-meta{font-size:9px}
+    html.pip-mode .confidence{font-size:9px}
+    html.pip-mode .summary{padding:0 12px 10px}
+    html.pip-mode .summary-label{font-size:9px;margin-bottom:5px}
+    html.pip-mode .field-summary{gap:5px}
+    html.pip-mode .summary-item{padding:5px 8px;font-size:10px;border-radius:9px}
+    html.pip-mode .summary-item strong{font-size:8px}
+    html.pip-mode .summary-status{width:14px;height:14px;font-size:9px}
+    html.pip-mode .confirm-bar{margin-top:10px;padding:8px 11px;border-radius:12px}
+    html.pip-mode .confirm-glyph{width:22px;height:22px;border-radius:7px;font-size:11px}
+    html.pip-mode .confirm-title{font-size:11px}
+    html.pip-mode .confirm-sub{font-size:9px}
+    html.pip-mode .output-panel{margin-top:10px}
+    html.pip-mode .output-header{padding:8px 12px 4px}
+    html.pip-mode .output-header h3{font-size:11px}
+    html.pip-mode .output-status{font-size:9px}
+    html.pip-mode #output{min-height:80px;margin:0 12px 12px;width:calc(100% - 24px);padding:10px;font-size:10px;border-radius:11px}
+    html.pip-mode .history-section{margin-top:10px;padding-top:10px}
+    html.pip-mode .history-header h3{font-size:11px}
+    html.pip-mode .history-clear{font-size:9px}
+    html.pip-mode .history-item{padding:6px 9px;border-radius:9px}
+    html.pip-mode .history-item .cat{font-size:9px}
+    html.pip-mode .history-item .time,html.pip-mode .history-item .preview-text{font-size:8px}
+    html.pip-mode .history-item button{padding:3px 7px;font-size:8px;border-radius:7px}
+    html.pip-mode .banner{margin:0 12px 8px;padding:8px 11px;font-size:9px;border-radius:11px}
+    html.pip-mode .banner.show{padding:8px 11px;margin:0 12px 8px}
+    html.pip-mode .inline-confirm{margin:6px 12px 0;padding:8px 11px;font-size:10px;border-radius:11px}
+    html.pip-mode .toast{bottom:auto;top:8px;padding:7px 14px;font-size:10px}
+    html.pip-mode .toast.show{transform:translate(-50%,0)}
+    /* Defensive: the placeholder must never render inside the PiP doc */
+    html.pip-mode .pip-placeholder{display:none !important}
+
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
 </head>
@@ -423,7 +563,7 @@
 <script>
 (function(){
 // ============================================================
-// POINT 8: shared document reference + PiP state
+// Shared document reference + PiP state
 // ------------------------------------------------------------
 // Shadow the global `document` inside this IIFE. Whenever the app is hosted
 // in a different document (i.e. inside the Document PiP window) we simply
@@ -437,6 +577,7 @@ let document = openerDocument;
 let pipWindow = null;        // the Window returned by documentPictureInPicture
 let pipPlaceholder = null;   // dashed card that sits in the main tab while floating
 const appNode = document.getElementById('app');
+const originalAppParent = appNode.parentNode;  // captured once, in the opener
 
 // -------- UTILITY --------
 function esc(str){ if(!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -714,6 +855,27 @@ function saveHistory(arr){ try{ localStorage.setItem('txf_history', JSON.stringi
 function loadQueue(){ try{ return JSON.parse(localStorage.getItem('txf_queue')||'[]'); }catch(e){ return []; } }
 function saveQueue(arr){ try{ localStorage.setItem('txf_queue', JSON.stringify(arr)); }catch(e){} }
 
+// PiP size persistence
+const PIP_SIZE_DEFAULT = { width: 540, height: 780 };
+function loadPipSize(){
+  try {
+    const raw = localStorage.getItem('txf_pip_size');
+    if(raw){
+      const s = JSON.parse(raw);
+      if(s && typeof s.width === 'number' && typeof s.height === 'number'
+         && s.width >= 300 && s.height >= 400
+         && s.width <= 2400 && s.height <= 2400){
+        return { width: Math.round(s.width), height: Math.round(s.height) };
+      }
+    }
+  } catch(e){}
+  return PIP_SIZE_DEFAULT;
+}
+function savePipSize(w, h){
+  if(!w || !h || w < 300 || h < 400) return;
+  try { localStorage.setItem('txf_pip_size', JSON.stringify({ width: Math.round(w), height: Math.round(h) })); } catch(e){}
+}
+
 // -------- DOM REFS --------
 const tabsEl = document.getElementById('tabs');
 const slaInfo = document.getElementById('slaInfo');
@@ -779,10 +941,17 @@ let lastDetection = null;
 let queue = loadQueue();
 let queueActiveId = null;
 let lastGenerated = null;
+let pipResizeTimer = null;
 
 // -------- THEME --------
-function setTheme(dark){ document.documentElement.classList.toggle('dark', dark); localStorage.setItem('txf_theme', dark?'dark':'light'); }
-themeToggle.addEventListener('click', function(){ setTheme(!document.documentElement.classList.contains('dark')); });
+function setTheme(dark){
+  openerDocument.documentElement.classList.toggle('dark', dark);
+  if(pipWindow && pipWindow.document){
+    pipWindow.document.documentElement.classList.toggle('dark', dark);
+  }
+  try { localStorage.setItem('txf_theme', dark ? 'dark' : 'light'); } catch(e){}
+}
+themeToggle.addEventListener('click', function(){ setTheme(!openerDocument.documentElement.classList.contains('dark')); });
 if(localStorage.getItem('txf_theme')==='dark') setTheme(true);
 
 // -------- TOAST --------
@@ -923,14 +1092,13 @@ function createBankDropdown(containerId, fieldId){
   }
   inp.addEventListener('input', function(){ hidden.value=''; render(inp.value); list.classList.toggle('show', inp.value.trim()!==''); });
   inp.addEventListener('focus', function(){ render(inp.value); list.classList.add('show'); });
-  // NOTE: the outside-click close is handled by the global handleDocClick —
-  // no per-dropdown listener here (that would leak a listener per re-render).
+  // Outside-click close is handled by the global handleDocClick (both docs).
   render('');
   wrap.append(inp, hidden, list); container.appendChild(wrap);
   return { getValue:function(){ return hidden.value; }, input:inp, hidden:hidden };
 }
 
-// -------- Tooltips work on click / tap / keyboard, not just hover --------
+// -------- Help tooltips (click / tap / keyboard) --------
 function wireHelpIcons(){
   dynamicContainer.querySelectorAll('.help-icon').forEach(function(btn){
     btn.addEventListener('click', function(e){
@@ -950,7 +1118,7 @@ function closeAllTooltips(){
   });
 }
 
-// -------- FIELD PASTE BUTTONS --------
+// -------- Field paste buttons --------
 function wireFieldPasteButtons(){
   dynamicContainer.querySelectorAll('.field-paste-btn').forEach(function(btn){
     btn.addEventListener('click', function(e){
@@ -1034,7 +1202,7 @@ function renderCategory(opts){
   previewEl.innerHTML='';
   parseStatus.textContent='\u00A0';
   errorBanner.classList.remove('show');
-  warnBanner.classList.remove('show');
+  warnBanner.classList.remove('show', 'critical');
   currentParsed={}; currentTokens=[];
   copyOnlyBtn.disabled = !lastOutputText;
 
@@ -1133,15 +1301,17 @@ function updateModePill(){
   else modePill.textContent='Auto-detect';
 }
 
-// -------- Status is never colour-only --------
+// -------- Status glyphs (never colour-only) --------
 function statusGlyph(status){
   if(status==='ok') return '✓';
   if(status==='review') return '!';
+  if(status==='critical') return '⛔';
   return '✕';
 }
 function statusWord(status){
   if(status==='ok') return 'Valid';
   if(status==='review') return 'Needs review';
+  if(status==='critical') return 'Critical';
   return 'Missing';
 }
 
@@ -1201,6 +1371,13 @@ function updateAnalysis(parsed, tokens){
     if(amtItem) amtItem.status='missing';
   }
 
+  // High-severity: duplicate reference — flag the Reference field as critical.
+  if(parsed.ref && checkDuplicateRef(parsed.ref)){
+    for(let i=0;i<items.length;i++){
+      if(/reference/i.test(items[i].label)){ items[i].status='critical'; break; }
+    }
+  }
+
   if(items.length){
     fieldSummary.innerHTML = items.map(function(i,idx){
       return '<div class="summary-item '+i.status+'" style="transition-delay:'+(idx*30)+'ms">'
@@ -1219,8 +1396,16 @@ function updateAnalysis(parsed, tokens){
     fieldSummary.innerHTML='<span class="summary-empty">No fields extracted yet</span>';
   }
 
+  const hasCritical = items.some(function(i){ return i.status==='critical'; });
   const hasMissing = items.some(function(i){ return i.status==='missing' || i.status==='review'; });
   if(!tokens.length){ resetAnalysis(); }
+  else if(hasCritical){
+    analysisState.dataset.state='critical';
+    statusDot.textContent='⛔';
+    detectionTitle.textContent=cat.label;
+    analysisMeta.textContent = tokens.length+' fields — duplicate reference detected';
+    detectionConfidence.textContent='⛔ Duplicate ref';
+  }
   else if(hasMissing){
     analysisState.dataset.state='review';
     statusDot.textContent='!';
@@ -1367,13 +1552,15 @@ function generate(){
   const ref = parsed.ref || '';
   const isDup = ref && checkDuplicateRef(ref);
   if(isDup){
-    warnBanner.innerHTML='<strong>⚠ Duplicate reference:</strong> "'+esc(ref)+'" was already processed.';
+    warnBanner.classList.add('critical');
+    warnBanner.innerHTML='<strong>⛔ Duplicate reference:</strong> "'+esc(ref)+'" was already processed.';
     warnBanner.classList.add('show');
   } else if(warns.length){
+    warnBanner.classList.remove('critical');
     warnBanner.innerHTML='<strong>⚠ Format check:</strong><ul>'+warns.map(function(m){ return '<li>'+esc(m)+'</li>'; }).join('')+'</ul>';
     warnBanner.classList.add('show');
   } else {
-    warnBanner.classList.remove('show');
+    warnBanner.classList.remove('show','critical');
   }
 
   return cat.build(parsed, fieldVals);
@@ -1430,7 +1617,7 @@ function resetInputOnly(){
   outputStatus.textContent='Nothing generated yet';
   copyOnlyBtn.disabled=true;
   errorBanner.classList.remove('show');
-  warnBanner.classList.remove('show');
+  warnBanner.classList.remove('show','critical');
   resetAnalysis();
   renderDetectionBar();
   updateModePill();
@@ -1467,7 +1654,7 @@ function copyOnly(){
   navigator.clipboard.writeText(lastOutputText).then(function(){ showToast('Output copied'); }).catch(function(){ showToast('Copy failed'); });
 }
 
-// -------- DELIBERATE DISCARD, WITH A REAL CONFIRM --------
+// -------- DELIBERATE DISCARD --------
 function openDiscardConfirm(){
   const hasSomething = inputEl.value.trim() !== '' || lastOutputText !== '';
   if(!hasSomething){ showToast('Nothing to discard'); return; }
@@ -1614,9 +1801,7 @@ historyYes.addEventListener('click', function(){
 });
 
 // ============================================================
-// Shared document-level handlers (used on both the opener doc
-// and the PiP doc, so shortcuts / outside-click / dropdown close
-// keep working no matter which document owns #app right now).
+// Shared document-level handlers (used on both documents)
 // ============================================================
 function handleDocClick(e){
   const targetDoc = (e.target && e.target.ownerDocument) || document;
@@ -1651,7 +1836,7 @@ function attachDocListeners(doc){
 attachDocListeners(openerDocument);
 
 // ============================================================
-// POINT 8: Document Picture-in-Picture
+// Document Picture-in-Picture
 // ============================================================
 const pipSupported = ('documentPictureInPicture' in window);
 
@@ -1662,24 +1847,47 @@ if(!pipSupported){
   pipBtn.setAttribute('aria-label','Picture-in-Picture requires Chrome or Edge');
 }
 
-function ensurePipPlaceholder(){
-  if(pipPlaceholder) return pipPlaceholder;
-  pipPlaceholder = openerDocument.createElement('div');
-  pipPlaceholder.className = 'pip-placeholder';
-  pipPlaceholder.hidden = true;
-  pipPlaceholder.innerHTML =
-    '<div class="pip-placeholder-inner">'
-    + '<div class="pip-placeholder-glyph" aria-hidden="true">⧉</div>'
-    + '<div class="pip-placeholder-title">TxForm is floating</div>'
-    + '<div class="pip-placeholder-sub">The tool is open in a Picture-in-Picture window, above all your tabs. Use it there, or bring it back below.</div>'
-    + '<button type="button" class="primary-btn" data-pip-return>Bring back to this tab</button>'
-    + '</div>';
-  // Insert as a sibling of #app so we can slot #app back into place later.
-  appNode.parentNode.insertBefore(pipPlaceholder, appNode.nextSibling);
-  pipPlaceholder.querySelector('[data-pip-return]').addEventListener('click', function(){
+const PIP_PLACEHOLDER_HTML =
+  '<div class="pip-placeholder-inner">'
+  + '<div class="pip-placeholder-glyph" aria-hidden="true">⧉</div>'
+  + '<div class="pip-placeholder-title">TxForm is floating</div>'
+  + '<div class="pip-placeholder-sub">The tool is open in a Picture-in-Picture window, above all your tabs. Use it there, or bring it back below.</div>'
+  + '<button type="button" class="primary-btn" data-pip-return>Bring back to this tab</button>'
+  + '</div>';
+
+function buildPlaceholder(){
+  const el = openerDocument.createElement('div');
+  el.className = 'pip-placeholder';
+  el.setAttribute('hidden','');
+  el.innerHTML = PIP_PLACEHOLDER_HTML;
+  el.querySelector('[data-pip-return]').addEventListener('click', function(){
     if(pipWindow) closePip();
   });
+  return el;
+}
+
+// FIX: the placeholder must never exist inside the PiP document. We always
+// rebuild it in the opener document, and always reattach it to the cached
+// original parent — regardless of what happened to #app.
+function ensurePipPlaceholder(){
+  if(pipPlaceholder && pipPlaceholder.ownerDocument !== openerDocument){
+    pipPlaceholder = null;
+  }
+  if(!pipPlaceholder){
+    pipPlaceholder = buildPlaceholder();
+  }
+  if(pipPlaceholder.parentNode !== originalAppParent){
+    originalAppParent.appendChild(pipPlaceholder);
+  }
   return pipPlaceholder;
+}
+
+function showPlaceholder(){
+  ensurePipPlaceholder();
+  pipPlaceholder.removeAttribute('hidden');
+}
+function hidePlaceholder(){
+  if(pipPlaceholder) pipPlaceholder.setAttribute('hidden','');
 }
 
 async function openPip(){
@@ -1689,52 +1897,61 @@ async function openPip(){
     return;
   }
 
+  const size = loadPipSize();
   let win;
   try {
-    win = await window.documentPictureInPicture.requestWindow({ width: 460, height: 740 });
+    win = await window.documentPictureInPicture.requestWindow({ width: size.width, height: size.height });
   } catch(err){
     showToast('Could not open the floating window');
     return;
   }
   pipWindow = win;
 
-  // ---- Copy the opener's styles into the PiP document <head> ----
+  // Copy styles from the opener into the PiP document <head>.
   openerDocument.querySelectorAll('style').forEach(function(styleEl){
     win.document.head.appendChild(styleEl.cloneNode(true));
   });
   openerDocument.querySelectorAll('link[rel="stylesheet"]').forEach(function(linkEl){
     win.document.head.appendChild(linkEl.cloneNode(true));
   });
-  // Preserve the dark-mode class on <html>, and give the PiP window a title.
+
+  // Preserve the current theme class on <html>, then add the compact-mode flag.
   win.document.documentElement.className = openerDocument.documentElement.className;
+  win.document.documentElement.classList.add('pip-mode');
   win.document.title = openerDocument.title || 'TxForm';
 
-  // ---- Show the placeholder in the main tab, then MOVE #app (not clone) ----
-  ensurePipPlaceholder().hidden = false;
+  // Show the placeholder in the main tab, then MOVE #app into the PiP document.
+  showPlaceholder();
   win.document.body.appendChild(appNode);
 
   // Switch the shared document binding so all lookups target the PiP doc.
   document = win.document;
 
-  // Attach the shared document-level handlers to the PiP doc too. The opener
-  // keeps its copies so the placeholder stays interactive.
+  // Attach the shared handlers to the PiP document as well. The opener keeps
+  // its copies so the placeholder stays interactive.
   attachDocListeners(win.document);
 
-  // ---- Header button becomes a "return to tab" affordance ----
+  // Header button becomes a "return to tab" affordance.
   pipBtn.classList.add('pip-active');
   pipBtn.textContent = '⤢';
   pipBtn.title = 'Return TxForm to this tab';
   pipBtn.setAttribute('aria-label','Return TxForm to this tab');
   pipBtn.removeAttribute('aria-disabled');
 
-  // Re-sync layout-sensitive bits with the PiP width.
-  win.addEventListener('resize', checkTabOverflow);
+  // Re-sync layout with the PiP width; persist size when the user resizes.
+  win.addEventListener('resize', function(){
+    checkTabOverflow();
+    clearTimeout(pipResizeTimer);
+    pipResizeTimer = setTimeout(function(){
+      if(pipWindow === win){
+        savePipSize(win.innerWidth, win.innerHeight);
+      }
+    }, 300);
+  });
   requestAnimationFrame(checkTabOverflow);
 
-  // Focus the input so the operator can keep typing without a click.
   try{ inputEl.focus(); }catch(e){}
 
-  // ---- Handle closure (browser's own close button, ESC, programmatic) ----
   win.addEventListener('pagehide', handlePipClosed, { once: true });
 
   showToast('TxForm is floating');
@@ -1743,24 +1960,34 @@ async function openPip(){
 function closePip(){
   if(!pipWindow) return;
   const win = pipWindow;
+  try { savePipSize(win.innerWidth, win.innerHeight); } catch(e){}
   try{ win.close(); }catch(e){}
-  // Safety net: if pagehide doesn't fire for some reason, force the restore.
   setTimeout(function(){ if(pipWindow === win) handlePipClosed(); }, 250);
 }
 
 function handlePipClosed(){
   if(!pipWindow) return;
   const win = pipWindow;
+
+  // Save final size before we lose the window reference.
+  try { savePipSize(win.innerWidth, win.innerHeight); } catch(e){}
+
   pipWindow = null;
 
-  // Restore the shared document binding first so any state updates use the opener.
+  // Restore the shared document binding first.
   document = openerDocument;
 
-  // Move #app back into .app-shell, exactly where the placeholder is.
-  if(appNode && pipPlaceholder && pipPlaceholder.parentNode){
-    pipPlaceholder.parentNode.insertBefore(appNode, pipPlaceholder);
-    pipPlaceholder.hidden = true;
+  // Defensive: if the placeholder somehow ended up outside the opener, rebuild.
+  if(pipPlaceholder && pipPlaceholder.ownerDocument !== openerDocument){
+    pipPlaceholder = null;
   }
+
+  // Move #app back into .app-shell, before the placeholder.
+  if(appNode){
+    ensurePipPlaceholder();
+    originalAppParent.insertBefore(appNode, pipPlaceholder);
+  }
+  hidePlaceholder();
 
   // Restore the header button.
   pipBtn.classList.remove('pip-active');
@@ -1771,10 +1998,7 @@ function handlePipClosed(){
     pipBtn.removeAttribute('aria-disabled');
   }
 
-  // Re-sync the tabs overflow indicator now that layout is back in this tab.
   checkTabOverflow();
-
-  // Focus the input so the operator can resume immediately.
   try{ inputEl.focus(); }catch(e){}
 
   showToast('Returned to this tab');
