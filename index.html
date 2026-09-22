@@ -14,52 +14,269 @@
       --bg-page:#f1f6f8; --bg-card:#ffffff; --surface:#f5f9fb; --surface-2:#eaf1f4;
       --text-primary:#0a1a1f; --text-secondary:#2a424a; --text-muted:#667b83;
       --border-light:#d0dfe4; --accent:#0abf9f; --accent-dark:#047a65; --accent-soft:#ddf5ef;
-      --success:#0b9f79; --success-soft:#e3f5ef; --warning:#b7791f; --danger:#b33838;
+      --success:#0b9f79; --success-soft:#e3f5ef; --warning:#b7791f; --warning-soft:#fff8e6; --danger:#b33838; --danger-soft:#fff0f0;
       --shadow-sm:0 2px 8px rgba(10,30,36,.04); --shadow-md:0 8px 24px rgba(10,30,36,.08); --shadow-lg:0 20px 48px rgba(10,30,36,.12);
     }
     .dark{ --bg-page:#0b1419; --bg-card:#15242b; --surface:#1a2d35; --surface-2:#1f333c;
       --text-primary:#eaf3f5; --text-secondary:#b8ccd2; --text-muted:#799097;
       --border-light:#2b4450; --accent:#09b596; --accent-dark:#04997d; --accent-soft:#133d35;
-      --success:#1db892; --success-soft:#10362e; --warning:#d4a149; --danger:#d45a5a;
+      --success:#1db892; --success-soft:#10362e; --warning:#d4a149; --warning-soft:#33290f; --danger:#d45a5a; --danger-soft:#3a1c1c;
       --shadow-sm:0 2px 8px rgba(0,0,0,.3); --shadow-md:0 8px 24px rgba(0,0,0,.4); --shadow-lg:0 20px 48px rgba(0,0,0,.5);
     }
-    html{scroll-behavior:smooth}body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 15% 0%,rgba(10,191,159,.06),transparent 30%),var(--bg-page);color:var(--text-primary);padding:24px 16px;min-height:100vh;transition:background .3s}
-    button,input,textarea{font:inherit}.app-shell{max-width:1260px;margin:0 auto}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 15% 0%,rgba(10,191,159,.06),transparent 30%),var(--bg-page);color:var(--text-primary);padding:24px 16px;min-height:100vh;transition:background .3s}
+    button,input,textarea{font:inherit}
+    .app-shell{max-width:1260px;margin:0 auto}
     .card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:32px;box-shadow:var(--shadow-sm);overflow:hidden;animation:pageIn .5s cubic-bezier(.16,.8,.2,1)}
     @keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
     .card-header{position:relative;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);background:linear-gradient(135deg,#04685a,#0abf9f);color:#fff;overflow:hidden}
     .dark .card-header{background:linear-gradient(135deg,#0a3d35,#067a66);}
     .card-header:after{content:'';position:absolute;width:280px;height:280px;border-radius:50%;right:-110px;top:-150px;background:rgba(255,255,255,.06);filter:blur(3px)}
-    .brand{display:flex;align-items:center;gap:14px;position:relative;z-index:1}.brand-mark{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.08);font-size:18px;font-weight:600;letter-spacing:-.02em}.brand h1{font-size:21px;font-weight:700;letter-spacing:-.02em}.brand p{font-size:11px;opacity:.7;margin-top:2px;font-weight:400}
-    .header-actions{position:relative;z-index:1;display:flex;align-items:center;gap:8px}.theme-toggle{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:background .2s,transform .15s;font-size:16px}.theme-toggle:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
-    .card-body{padding:22px 28px 28px}.workspace-top{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark)}.workspace-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:2px;color:var(--text-primary)}.workspace-subtitle{font-size:13px;color:var(--text-muted);margin-top:4px;font-weight:400}.mode-pill{padding:6px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent-dark);font-size:11px;font-weight:700;border:1px solid rgba(10,191,159,.15)}
-    .tabs{display:flex;gap:6px;overflow:auto;padding:4px;border:1px solid var(--border-light);background:var(--surface);border-radius:16px;margin-bottom:20px;transition:background .2s;position:relative}
+    .brand{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+    .brand-mark{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.08);font-size:18px;font-weight:600;letter-spacing:-.02em}
+    .brand h1{font-size:21px;font-weight:700;letter-spacing:-.02em}
+    .brand p{font-size:11px;opacity:.7;margin-top:2px;font-weight:400}
+    .header-actions{position:relative;z-index:1;display:flex;align-items:center;gap:8px}
+    .theme-toggle{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:background .2s,transform .15s;font-size:16px}
+    .theme-toggle:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+    .card-body{padding:22px 28px 28px}
+    .workspace-top{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:16px}
+    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark)}
+    .workspace-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:2px;color:var(--text-primary)}
+    .workspace-subtitle{font-size:13px;color:var(--text-muted);margin-top:4px;font-weight:400}
+    .mode-pill{padding:6px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent-dark);font-size:11px;font-weight:700;border:1px solid rgba(10,191,159,.15);white-space:nowrap}
+
+    /* ---------- POINT 8: Document Picture-in-Picture ---------- */
+    .pip-btn{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:12px;
+      background:rgba(255,255,255,.08);color:#fff;cursor:pointer;
+      transition:background .2s,transform .15s;font-size:16px;display:grid;place-items:center}
+    .pip-btn:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+    .pip-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+    .pip-btn.pip-active{background:rgba(255,255,255,.22);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+    .pip-btn.pip-unsupported{opacity:.4;cursor:not-allowed}
+    .pip-btn.pip-unsupported:hover{background:rgba(255,255,255,.08);transform:none}
+
+    .pip-placeholder{display:flex;align-items:center;justify-content:center;
+      min-height:240px;padding:48px 24px;border:2px dashed var(--border-light);
+      border-radius:32px;background:var(--bg-card);text-align:center}
+    .pip-placeholder[hidden]{display:none}
+    .pip-placeholder-inner{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:440px}
+    .pip-placeholder-glyph{width:56px;height:56px;border-radius:18px;
+      background:var(--accent-soft);color:var(--accent-dark);
+      display:grid;place-items:center;font-size:26px}
+    .pip-placeholder-title{font-size:16px;font-weight:700;color:var(--text-primary)}
+    .pip-placeholder-sub{font-size:12px;color:var(--text-muted);line-height:1.6}
+
+    /* ---------- DETECTION BAR ---------- */
+    .detect-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:18px;border:1px solid var(--border-light);background:var(--surface);margin-bottom:14px;transition:border-color .25s,background .25s,box-shadow .25s}
+    .detect-bar[data-confidence="high"]{border-color:var(--success);background:var(--success-soft);box-shadow:var(--shadow-sm)}
+    .detect-bar[data-confidence="medium"]{border-color:var(--warning);background:var(--warning-soft)}
+    .detect-bar[data-confidence="manual"]{border-color:var(--accent);background:var(--accent-soft)}
+    .detect-glyph{width:28px;height:28px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0;background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border-light)}
+    .detect-bar[data-confidence="high"] .detect-glyph{background:var(--success);border-color:var(--success);color:#fff}
+    .detect-bar[data-confidence="medium"] .detect-glyph{background:var(--warning);border-color:var(--warning);color:#fff}
+    .detect-bar[data-confidence="manual"] .detect-glyph{background:var(--accent);border-color:var(--accent);color:#fff}
+    .detect-copy{flex:1;min-width:0}
+    .detect-title{font-size:13px;font-weight:600;color:var(--text-primary)}
+    .detect-sub{font-size:10px;color:var(--text-muted);margin-top:2px}
+    .detect-action{border:1px solid var(--accent);background:var(--bg-card);color:var(--accent-dark);border-radius:10px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer;flex-shrink:0;transition:background .2s,color .2s}
+    .detect-action:hover{background:var(--accent);color:#fff}
+
+    /* ---------- TABS ---------- */
+    .tabs-wrap{margin-bottom:16px}
+    .tabs-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:6px}
+    .tabs{display:flex;gap:6px;overflow:auto;padding:4px;border:1px solid var(--border-light);background:var(--surface);border-radius:16px;transition:background .2s;position:relative}
     .tabs.overflowing::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;pointer-events:none;background:linear-gradient(to right,transparent,var(--surface));border-radius:0 16px 16px 0}
     @media(max-width:700px){.tabs{flex-wrap:wrap;overflow:visible;padding:6px}.tabs.overflowing::after{display:none}}
     .tab{flex:0 0 auto;border:0;background:transparent;color:var(--text-muted);padding:10px 16px;border-radius:12px;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s,transform .15s;position:relative}
     .tab:hover{background:var(--bg-card);color:var(--text-primary)}
-    .tab[aria-selected=true]{background:var(--bg-card);color:var(--accent-dark);box-shadow:var(--shadow-sm);position:relative}
+    .tab[aria-selected=true]{background:var(--bg-card);color:var(--accent-dark);box-shadow:var(--shadow-sm)}
     .tab[aria-selected=true]::after{content:'';position:absolute;bottom:2px;left:12px;right:12px;height:2px;border-radius:2px;background:linear-gradient(90deg,#0abf9f,#047a65)}
     .dark .tab[aria-selected=true]::after{background:linear-gradient(90deg,#09b596,#04997d)}
     .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-    .main-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:20px}.panel{border:1px solid var(--border-light);border-radius:24px;background:var(--bg-card);overflow:visible;box-shadow:var(--shadow-sm)}.panel-head{padding:14px 18px 8px;display:flex;justify-content:space-between;align-items:center}.panel-title{font-size:13px;font-weight:700;color:var(--text-primary)}.panel-caption{font-size:11px;color:var(--text-muted);margin-top:2px;font-weight:400}.panel-icon{width:32px;height:32px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;color:var(--text-secondary);flex-shrink:0}.panel-icon svg{width:18px;height:18px;stroke:var(--text-secondary);stroke-width:1.8;fill:none}
-    .input-panel{padding-bottom:14px}.paste-section{padding:0 18px}.paste-header{display:flex;justify-content:space-between;align-items:center;margin:4px 0 6px}.paste-header label{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-secondary)}.input-meta{font-size:10px;color:var(--text-muted)}textarea,input{width:100%;border:1px solid var(--border-light);border-radius:14px;background:var(--surface);color:var(--text-primary);outline:none;transition:border-color .2s,box-shadow .2s,background .2s;font-size:13px}textarea:focus,input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(10,191,159,.10)}textarea#input{min-height:180px;resize:vertical;padding:14px;font:12px/1.7 'JetBrains Mono','Fira Code',monospace;background:var(--bg-card)}.parse-status{font-size:10px;color:var(--text-muted);margin-top:6px;transition:color .2s}
-    .analysis-panel{min-height:100%}.analysis-status{margin:4px 18px 10px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;gap:14px;transition:border-color .3s,background .3s,box-shadow .3s;box-shadow:var(--shadow-sm)}.analysis-status[data-state=ready]{border-color:var(--success);background:var(--success-soft);box-shadow:var(--shadow-md)}.analysis-status[data-state=review]{border-color:#f2d38a;background:#fff8e6;box-shadow:var(--shadow-md)}.status-left{display:flex;align-items:center;gap:12px}.status-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);transition:background .3s,box-shadow .3s;flex-shrink:0}.analysis-status[data-state=waiting] .status-dot{background:#a0b3ba;box-shadow:none}.analysis-status[data-state=review] .status-dot{background:var(--warning);box-shadow:0 0 0 4px rgba(183,121,31,.15)}.analysis-status[data-state=ready] .status-dot{background:var(--success);box-shadow:0 0 0 4px rgba(11,159,121,.15)}.detection-name{font-size:13px;font-weight:700}.detection-meta{font-size:10px;color:var(--text-muted);margin-top:2px}.confidence{font-size:10px;font-weight:700;transition:color .3s}.analysis-status[data-state=ready] .confidence{color:var(--success)}.analysis-status[data-state=review] .confidence{color:var(--warning)}
-    .summary{padding:0 18px 14px}.summary-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--text-muted);margin-bottom:8px}.field-summary{display:grid;grid-template-columns:1fr 1fr;gap:8px}.summary-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--border-light);border-radius:12px;background:var(--surface);font-size:11px;color:var(--text-secondary);opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease,border-color .2s,background .2s}.summary-item.visible{opacity:1;transform:translateY(0)}.summary-item strong{margin-left:auto;font-size:9px;font-weight:700}.summary-item.ok strong{color:var(--success)}.summary-item.missing strong{color:var(--danger)}.summary-item.review strong{color:var(--warning)}.summary-dot{width:7px;height:7px;border-radius:50%;background:var(--success);transition:background .3s;flex-shrink:0}.missing .summary-dot{background:var(--danger)}.review .summary-dot{background:var(--warning)}.summary-empty{font-size:11px;color:var(--text-muted);padding:6px 0}
-    .dynamic-fields{margin:0 18px 12px;padding:11px 13px;border:1px solid var(--border-light);border-radius:16px;background:var(--surface);display:flex;flex-wrap:wrap;gap:12px;transition:background .2s}.field{flex:1 1 160px;display:flex;flex-direction:column;gap:4px}.field-label-wrapper{display:flex;align-items:center;gap:6px}.field label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary)}.req-mark{color:var(--danger)}.help-icon{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--text-muted);color:#fff;font-size:9px;font-weight:700;cursor:help;position:relative;transition:background .2s}.help-icon .tooltip{visibility:hidden;opacity:0;position:absolute;z-index:20;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);width:240px;padding:8px 12px;border-radius:10px;background:#16242b;color:#fff;font-size:10px;line-height:1.5;transition:opacity .2s ease,transform .2s ease,visibility .2s;pointer-events:none;font-weight:400}.help-icon:hover .tooltip,.help-icon:focus .tooltip{visibility:visible;opacity:1;transform:translateX(-50%) translateY(0)}.field input{padding:9px 12px;font-size:12px;background:var(--bg-card);border-radius:12px}.field-msg{font-size:9px;color:var(--danger);min-height:14px}.input.error{border-color:var(--danger);background:#fff5f5}
-    .sla-info{margin:0 18px 12px;padding:10px 14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--border-light);color:var(--text-secondary);font-size:11px;transition:background .2s,border-color .2s}.sla-info strong{color:var(--accent-dark)}
-    .banner{margin:0 18px 10px;padding:10px 14px;border-radius:14px;font-size:10px;opacity:0;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,max-height .3s ease,padding .25s ease,margin .25s ease;max-height:0;overflow:hidden;visibility:hidden}.banner.show{opacity:1;transform:translateY(0);max-height:300px;visibility:visible;padding:10px 14px;margin:0 18px 10px}.banner ul{margin:4px 0 0 16px}.banner.error{background:#fff0f0;border:1px solid #f4b4b4;color:#9b2c2c}.banner.warn{background:#fff8e6;border:1px solid #f2d38a;color:#8a650d}
-    .preview{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.chip{font:10px monospace;background:var(--surface);border:1px solid var(--border-light);border-radius:8px;padding:3px 8px;color:var(--text-secondary);transition:background .2s,border-color .2s,color .2s}.chip b{color:var(--accent-dark)}.chip.warn{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
-    .action-bar{display:flex;align-items:center;gap:8px;padding:0 18px;margin-top:2px}.primary-btn,.copy-only,.btn-clear{border:0;border-radius:14px;padding:11px 18px;font-size:11px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s,opacity .2s}.primary-btn{background:linear-gradient(135deg,#0abf9f,#047a65);color:#fff;box-shadow:0 6px 16px rgba(10,191,159,.25)}.primary-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(10,191,159,.3)}.primary-btn:active{transform:translateY(0)}.copy-only{background:var(--surface);border:1px solid var(--border-light);color:var(--accent-dark)}.copy-only:disabled,.history-item button:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}.btn-clear{background:transparent;color:var(--text-muted)}.kbd-hint{padding:8px 18px 0;font-size:10px;color:var(--text-muted)}kbd{padding:2px 6px;border:1px solid var(--border-light);border-radius:5px;background:var(--surface);font-size:10px}
-    .output-panel{margin-top:18px}.output-header{padding:14px 18px 8px;display:flex;justify-content:space-between;align-items:center}.output-header h3{font-size:13px;font-weight:700;color:var(--text-primary)}.output-status{font-size:10px;color:var(--text-muted)}#output{display:block;margin:0 18px 16px;width:calc(100% - 36px);min-height:150px;padding:14px;background:#0b181e;color:#d9f8f2;border:1px solid #1e3840;border-radius:16px;font:11px/1.7 'JetBrains Mono','Fira Code',monospace;transition:background .2s,border-color .2s;box-shadow:inset 0 2px 8px rgba(0,0,0,.2)}
-    .history-section{margin-top:20px;border-top:1px solid var(--border-light);padding-top:16px}.history-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer}.history-header h3{font-size:12px;font-weight:600;color:var(--text-muted)}.history-clear{background:none;border:0;color:var(--text-muted);font-size:10px;text-decoration:underline;cursor:pointer;transition:color .2s}.history-clear:hover{color:var(--text-primary)}.history-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}.history-section.collapsed .history-list{display:none}.history-toggle-icon{display:inline-block;transition:transform .25s ease}.history-section.collapsed .history-toggle-icon{transform:rotate(-90deg)}.history-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;border:1px solid var(--border-light);border-radius:12px;background:var(--surface);transition:border-color .2s,background .2s}.history-item .meta{display:flex;flex-direction:column;gap:2px;overflow:hidden}.history-item .cat{font-size:10px;font-weight:700;color:var(--accent-dark)}.history-item .time,.history-item .preview-text{font-size:9px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.history-item button{border:1px solid var(--border-light);background:var(--bg-card);color:var(--accent-dark);border-radius:10px;padding:4px 10px;font-size:9px;font-weight:700;cursor:pointer;transition:background .2s,color .2s,border-color .2s,opacity .2s}.history-item button:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent)}
-    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,10px);opacity:0;pointer-events:none;background:#14252b;color:#fff;padding:10px 18px;border-radius:999px;font-size:11px;font-weight:600;box-shadow:var(--shadow-lg);transition:opacity .25s ease,transform .25s ease;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}.shake{animation:shake .3s ease}@keyframes shake{20%,80%{transform:translateX(-2px)}40%,60%{transform:translateX(2px)}}
-    .searchable-dropdown{position:relative;width:100%}.searchable-dropdown input{width:100%;padding:9px 12px;border:1px solid var(--border-light);border-radius:12px;background:var(--bg-card);font-size:12px;color:var(--text-primary);outline:none;transition:border-color .2s,box-shadow .2s,background .2s}.searchable-dropdown input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(10,191,159,.10)}.searchable-dropdown .dropdown-list{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-card);border:1px solid var(--border-light);border-radius:14px;max-height:220px;overflow-y:auto;display:none;z-index:30;box-shadow:var(--shadow-md);padding:4px 0}.searchable-dropdown .dropdown-list.show{display:block}.searchable-dropdown .dropdown-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--border-light);transition:background .15s;display:flex;flex-direction:column;gap:2px}.searchable-dropdown .dropdown-item:last-child{border-bottom:none}.searchable-dropdown .dropdown-item:hover{background:var(--surface)}.searchable-dropdown .dropdown-item .english-name{font-size:13px;font-weight:600;color:var(--text-primary)}.searchable-dropdown .dropdown-item .arabic-name{font-size:11px;color:var(--text-muted);direction:rtl;text-align:right}.searchable-dropdown .dropdown-item .code-badge{font-size:9px;color:var(--text-muted);background:var(--surface-2);padding:1px 8px;border-radius:4px;font-family:monospace;align-self:flex-start;margin-top:1px}.searchable-dropdown .dropdown-item mark{background:#fef3c7;border-radius:2px;padding:0 2px}.searchable-dropdown .dropdown-item .empty{font-size:12px;color:var(--text-muted);padding:12px 14px;text-align:center;font-weight:400}
-    .empty-state{color:var(--text-muted);font-size:12px;display:flex;align-items:center;gap:8px;padding:4px 0}.empty-state .icon{font-size:16px;opacity:.5}
-    .undo-bar{display:none;margin:0 18px 10px;padding:8px 14px;background:var(--surface-2);border-radius:12px;font-size:10px;color:var(--text-secondary);align-items:center;gap:12px;border:1px solid var(--border-light)}.undo-bar.show{display:flex}.undo-bar button{background:none;border:0;color:var(--accent-dark);font-weight:700;cursor:pointer;font-size:10px}
-    .category-content{transition:opacity .2s ease,transform .2s ease;opacity:1;transform:none}
-    .category-content.switching{opacity:0;transform:translateY(6px)}
-    @media(max-width:850px){.main-grid{grid-template-columns:1fr}.analysis-panel{min-height:0}}@media(max-width:600px){body{padding:10px}.card-header{padding:16px 18px}.card-body{padding:16px 14px}.workspace-title{font-size:22px}.field-summary{grid-template-columns:1fr}.action-bar{flex-wrap:wrap}.primary-btn{flex:1}.tabs{margin-left:0;margin-right:0}.main-grid{gap:14px}}
+
+    /* ---------- QUEUE ---------- */
+    .queue-panel{margin-bottom:16px;padding:0}
+    .queue-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px 10px}
+    .queue-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+    .queue-count{color:var(--accent-dark);font-weight:700}
+    .queue-caption{font-size:11px;color:var(--text-muted);margin-top:2px}
+    .queue-list{display:flex;flex-direction:column;gap:6px;padding:0 18px 16px}
+    .queue-empty{font-size:11px;color:var(--text-muted);padding:6px 0}
+    .queue-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border-light);border-radius:14px;background:var(--surface);transition:border-color .2s,background .2s}
+    .queue-item.active{border-color:var(--accent);background:var(--accent-soft)}
+    .queue-index{width:20px;height:20px;border-radius:7px;background:var(--surface-2);color:var(--text-secondary);display:grid;place-items:center;font-size:10px;font-weight:700;flex-shrink:0}
+    .queue-item.active .queue-index{background:var(--accent);color:#fff}
+    .queue-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+    .queue-cat{font-size:10px;font-weight:700;color:var(--accent-dark)}
+    .queue-preview{font-size:9px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'JetBrains Mono','Fira Code',monospace}
+    .mini-btn{border:1px solid var(--border-light);background:var(--bg-card);color:var(--accent-dark);border-radius:9px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;transition:background .2s,border-color .2s,color .2s;flex-shrink:0}
+    .mini-btn:hover{background:var(--accent-soft);border-color:var(--accent)}
+    .icon-btn{border:1px solid var(--border-light);background:var(--bg-card);color:var(--text-muted);width:24px;height:24px;border-radius:8px;display:grid;place-items:center;font-size:12px;line-height:1;cursor:pointer;flex-shrink:0;transition:background .2s,color .2s,border-color .2s}
+    .icon-btn:hover{background:var(--surface-2);color:var(--text-primary)}
+
+    /* ---------- MAIN GRID ---------- */
+    .main-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:20px}
+    .panel{border:1px solid var(--border-light);border-radius:24px;background:var(--bg-card);overflow:visible;box-shadow:var(--shadow-sm)}
+    .panel-head{padding:14px 18px 8px;display:flex;justify-content:space-between;align-items:center}
+    .panel-title{font-size:13px;font-weight:700;color:var(--text-primary)}
+    .panel-caption{font-size:11px;color:var(--text-muted);margin-top:2px;font-weight:400}
+    .panel-icon{width:32px;height:32px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;color:var(--text-secondary);flex-shrink:0}
+    .panel-icon svg{width:18px;height:18px;stroke:var(--text-secondary);stroke-width:1.8;fill:none}
+    .input-panel{padding-bottom:14px}
+    .paste-section{padding:0 18px}
+    .paste-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:4px 0 6px}
+    .paste-header label{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-secondary)}
+    .paste-header-right{display:flex;align-items:center;gap:8px}
+    .input-meta{font-size:10px;color:var(--text-muted)}
+    textarea,input{width:100%;border:1px solid var(--border-light);border-radius:14px;background:var(--surface);color:var(--text-primary);outline:none;transition:border-color .2s,box-shadow .2s,background .2s;font-size:13px}
+    textarea:focus,input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(10,191,159,.10)}
+    textarea#input{min-height:170px;resize:vertical;padding:14px;font:12px/1.7 'JetBrains Mono','Fira Code',monospace;background:var(--bg-card)}
+    .parse-status{font-size:10px;color:var(--text-muted);margin-top:6px;transition:color .2s}
+
+    .analysis-panel{min-height:100%}
+    .analysis-status{margin:4px 18px 10px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;gap:14px;transition:border-color .3s,background .3s,box-shadow .3s;box-shadow:var(--shadow-sm)}
+    .analysis-status[data-state=ready]{border-color:var(--success);background:var(--success-soft);box-shadow:var(--shadow-md)}
+    .analysis-status[data-state=review]{border-color:var(--warning);background:var(--warning-soft);box-shadow:var(--shadow-md)}
+    .status-left{display:flex;align-items:center;gap:12px}
+    .status-dot{width:22px;height:22px;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:800;background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border-light);flex-shrink:0;transition:background .3s,color .3s,border-color .3s}
+    .analysis-status[data-state=waiting] .status-dot{background:var(--surface-2);color:var(--text-muted)}
+    .analysis-status[data-state=review] .status-dot{background:var(--warning);border-color:var(--warning);color:#fff}
+    .analysis-status[data-state=ready] .status-dot{background:var(--success);border-color:var(--success);color:#fff}
+    .detection-name{font-size:13px;font-weight:700}
+    .detection-meta{font-size:10px;color:var(--text-muted);margin-top:2px}
+    .confidence{font-size:10px;font-weight:700;transition:color .3s}
+    .analysis-status[data-state=ready] .confidence{color:var(--success)}
+    .analysis-status[data-state=review] .confidence{color:var(--warning)}
+
+    .summary{padding:0 18px 14px}
+    .summary-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--text-muted);margin-bottom:8px}
+    .field-summary{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .summary-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--border-light);border-radius:12px;background:var(--surface);font-size:11px;color:var(--text-secondary);opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease,border-color .2s,background .2s}
+    .summary-item.visible{opacity:1;transform:translateY(0)}
+    .summary-item strong{margin-left:auto;font-size:9px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:45%}
+    .summary-item.ok strong{color:var(--success)}
+    .summary-item.missing strong{color:var(--danger)}
+    .summary-item.review strong{color:var(--warning)}
+    .summary-item.review{border-color:var(--warning)}
+    .summary-item.missing{border-color:var(--danger)}
+    .summary-status{width:17px;height:17px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:900;flex-shrink:0;border:1.5px solid currentColor;line-height:1}
+    .summary-item.ok .summary-status{color:var(--success)}
+    .summary-item.review .summary-status{color:var(--warning)}
+    .summary-item.missing .summary-status{color:var(--danger)}
+    .summary-empty{font-size:11px;color:var(--text-muted);padding:6px 0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    .dynamic-fields{margin:0 18px 12px;padding:11px 13px;border:1px solid var(--border-light);border-radius:16px;background:var(--surface);display:flex;flex-wrap:wrap;gap:12px;transition:background .2s}
+    .field{flex:1 1 160px;display:flex;flex-direction:column;gap:4px;min-width:0}
+    .field-label-wrapper{display:flex;align-items:center;gap:6px}
+    .field label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary)}
+    .req-mark{color:var(--danger)}
+    .help-icon{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--text-muted);color:#fff;font-size:9px;font-weight:700;cursor:pointer;position:relative;transition:background .2s;border:0;padding:0;flex-shrink:0;font-family:inherit}
+    .help-icon:hover,.help-icon.open{background:var(--accent-dark)}
+    .help-icon:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    .help-icon .tooltip{visibility:hidden;opacity:0;position:absolute;z-index:40;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);width:240px;padding:8px 12px;border-radius:10px;background:#16242b;color:#fff;font-size:10px;line-height:1.5;transition:opacity .2s ease,transform .2s ease,visibility .2s;pointer-events:none;font-weight:400;text-align:left;box-shadow:var(--shadow-md)}
+    .help-icon:hover .tooltip,
+    .help-icon:focus-visible .tooltip,
+    .help-icon.open .tooltip{visibility:visible;opacity:1;transform:translateX(-50%) translateY(0)}
+    .field input{padding:9px 12px;font-size:12px;background:var(--bg-card);border-radius:12px}
+    .field-msg{font-size:9px;color:var(--danger);min-height:14px}
+    .input.error{border-color:var(--danger);background:#fff5f5}
+    .dark .input.error{background:#3a1c1c}
+    .input-with-action{position:relative;display:flex}
+    .input-with-action input{padding-right:38px}
+    .field-paste-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:9px;border:1px solid var(--border-light);background:var(--surface);color:var(--text-muted);cursor:pointer;font-size:12px;display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
+    .field-paste-btn:hover{background:var(--accent-soft);color:var(--accent-dark);border-color:var(--accent)}
+
+    .sla-info{margin:0 18px 12px;padding:10px 14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--border-light);color:var(--text-secondary);font-size:11px;transition:background .2s,border-color .2s}
+    .sla-info strong{color:var(--accent-dark)}
+    .banner{margin:0 18px 10px;padding:10px 14px;border-radius:14px;font-size:10px;opacity:0;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,max-height .3s ease,padding .25s ease,margin .25s ease;max-height:0;overflow:hidden;visibility:hidden}
+    .banner.show{opacity:1;transform:translateY(0);max-height:300px;visibility:visible;padding:10px 14px;margin:0 18px 10px}
+    .banner ul{margin:4px 0 0 16px}
+    .banner.error{background:var(--danger-soft);border:1px solid #f4b4b4;color:#9b2c2c}
+    .dark .banner.error{color:#f0a0a0;border-color:#5c2a2a}
+    .banner.warn{background:var(--warning-soft);border:1px solid #f2d38a;color:#8a650d}
+    .dark .banner.warn{color:#e5c37a;border-color:#5c4a1e}
+    .preview{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .chip{font:10px monospace;background:var(--surface);border:1px solid var(--border-light);border-radius:8px;padding:3px 8px;color:var(--text-secondary);transition:background .2s,border-color .2s,color .2s}
+    .chip b{color:var(--accent-dark)}
+    .chip.warn{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
+    .dark .chip.warn{background:#3a1c1c;color:#f0a0a0;border-color:#5c2a2a}
+
+    .action-bar{display:flex;align-items:center;gap:8px;padding:0 18px;margin-top:2px;flex-wrap:wrap}
+    .primary-btn,.copy-only,.btn-clear,.danger-btn{border:0;border-radius:14px;padding:11px 18px;font-size:11px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s,opacity .2s}
+    .primary-btn{background:linear-gradient(135deg,#0abf9f,#047a65);color:#fff;box-shadow:0 6px 16px rgba(10,191,159,.25)}
+    .primary-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(10,191,159,.3)}
+    .primary-btn:active{transform:translateY(0)}
+    .copy-only{background:var(--surface);border:1px solid var(--border-light);color:var(--accent-dark)}
+    .copy-only:disabled,.history-item button:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+    .btn-clear{background:transparent;color:var(--text-muted)}
+    .btn-clear:hover{color:var(--text-primary)}
+    .danger-btn{background:var(--danger);color:#fff}
+    .danger-btn:hover{filter:brightness(1.08)}
+    .kbd-hint{padding:8px 18px 0;font-size:10px;color:var(--text-muted)}
+    kbd{padding:2px 6px;border:1px solid var(--border-light);border-radius:5px;background:var(--surface);font-size:10px}
+
+    .inline-confirm{display:none;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 18px 0;padding:10px 14px;border-radius:14px;background:var(--danger-soft);border:1px solid #f4b4b4;font-size:11px;color:var(--text-secondary)}
+    .dark .inline-confirm{border-color:#5c2a2a}
+    .inline-confirm.show{display:flex}
+    .inline-confirm .spacer{flex:1}
+
+    .confirm-bar{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px 16px;border-radius:18px;border:1px solid var(--success);background:var(--success-soft);box-shadow:var(--shadow-sm);animation:pageIn .3s ease}
+    .confirm-bar[hidden]{display:none}
+    .confirm-glyph{width:26px;height:26px;border-radius:9px;background:var(--success);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
+    .confirm-copy{flex:1;min-width:0}
+    .confirm-title{font-size:12px;font-weight:700;color:var(--text-primary)}
+    .confirm-sub{font-size:10px;color:var(--text-muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .confirm-bar .mini-btn{flex-shrink:0}
+
+    .output-panel{margin-top:18px}
+    .output-header{padding:14px 18px 8px;display:flex;justify-content:space-between;align-items:center}
+    .output-header h3{font-size:13px;font-weight:700;color:var(--text-primary)}
+    .output-status{font-size:10px;color:var(--text-muted)}
+    #output{display:block;margin:0 18px 16px;width:calc(100% - 36px);min-height:150px;padding:14px;background:#0b181e;color:#d9f8f2;border:1px solid #1e3840;border-radius:16px;font:11px/1.7 'JetBrains Mono','Fira Code',monospace;transition:background .2s,border-color .2s;box-shadow:inset 0 2px 8px rgba(0,0,0,.2)}
+
+    .history-section{margin-top:20px;border-top:1px solid var(--border-light);padding-top:16px}
+    .history-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+    .history-header h3{font-size:12px;font-weight:600;color:var(--text-muted)}
+    .history-clear{background:none;border:0;color:var(--text-muted);font-size:10px;text-decoration:underline;cursor:pointer;transition:color .2s}
+    .history-clear:hover{color:var(--text-primary)}
+    .history-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+    .history-section.collapsed .history-list{display:none}
+    .history-toggle-icon{display:inline-block;transition:transform .25s ease}
+    .history-section.collapsed .history-toggle-icon{transform:rotate(-90deg)}
+    .history-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;border:1px solid var(--border-light);border-radius:12px;background:var(--surface);transition:border-color .2s,background .2s}
+    .history-item .meta{display:flex;flex-direction:column;gap:2px;overflow:hidden}
+    .history-item .cat{font-size:10px;font-weight:700;color:var(--accent-dark)}
+    .history-item .time,.history-item .preview-text{font-size:9px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .history-item button{border:1px solid var(--border-light);background:var(--bg-card);color:var(--accent-dark);border-radius:10px;padding:4px 10px;font-size:9px;font-weight:700;cursor:pointer;transition:background .2s,color .2s,border-color .2s,opacity .2s}
+    .history-item button:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent)}
+    .history-empty{font-size:11px;color:var(--text-muted);padding:6px 0}
+
+    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,10px);opacity:0;pointer-events:none;background:#14252b;color:#fff;padding:10px 18px;border-radius:999px;font-size:11px;font-weight:600;box-shadow:var(--shadow-lg);transition:opacity .25s ease,transform .25s ease;z-index:100}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .shake{animation:shake .3s ease}
+    @keyframes shake{20%,80%{transform:translateX(-2px)}40%,60%{transform:translateX(2px)}}
+
+    .searchable-dropdown{position:relative;width:100%}
+    .searchable-dropdown input{width:100%;padding:9px 12px;border:1px solid var(--border-light);border-radius:12px;background:var(--bg-card);font-size:12px;color:var(--text-primary);outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+    .searchable-dropdown input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(10,191,159,.10)}
+    .searchable-dropdown .dropdown-list{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-card);border:1px solid var(--border-light);border-radius:14px;max-height:220px;overflow-y:auto;display:none;z-index:30;box-shadow:var(--shadow-md);padding:4px 0}
+    .searchable-dropdown .dropdown-list.show{display:block}
+    .searchable-dropdown .dropdown-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--border-light);transition:background .15s;display:flex;flex-direction:column;gap:2px}
+    .searchable-dropdown .dropdown-item:last-child{border-bottom:none}
+    .searchable-dropdown .dropdown-item:hover{background:var(--surface)}
+    .searchable-dropdown .dropdown-item .english-name{font-size:13px;font-weight:600;color:var(--text-primary)}
+    .searchable-dropdown .dropdown-item .arabic-name{font-size:11px;color:var(--text-muted);direction:rtl;text-align:right}
+    .searchable-dropdown .dropdown-item .code-badge{font-size:9px;color:var(--text-muted);background:var(--surface-2);padding:1px 8px;border-radius:4px;font-family:monospace;align-self:flex-start;margin-top:1px}
+    .searchable-dropdown .dropdown-item mark{background:#fef3c7;border-radius:2px;padding:0 2px}
+    .searchable-dropdown .dropdown-item.empty{font-size:12px;color:var(--text-muted);padding:12px 14px;text-align:center;font-weight:400}
+
+    .empty-state{color:var(--text-muted);font-size:12px;display:flex;align-items:center;gap:8px;padding:4px 0}
+    .empty-state .icon{font-size:16px;opacity:.5}
+
+    @media(max-width:850px){.main-grid{grid-template-columns:1fr}.analysis-panel{min-height:0}}
+    @media(max-width:600px){body{padding:10px}.card-header{padding:16px 18px}.card-body{padding:16px 14px}.workspace-title{font-size:22px}.field-summary{grid-template-columns:1fr}.action-bar{flex-wrap:wrap}.primary-btn{flex:1}.main-grid{gap:14px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
 </head>
@@ -67,39 +284,160 @@
 <div class="app-shell"><div class="card" id="app">
   <div class="card-header">
     <div class="brand"><div class="brand-mark">⬡</div><div><h1>TxForm</h1><p>Transaction intelligence workspace</p></div></div>
-    <div class="header-actions"><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button></div>
+    <div class="header-actions">
+      <button type="button" class="pip-btn" id="pipBtn"
+              title="Float TxForm in a Picture-in-Picture window"
+              aria-label="Float TxForm in a Picture-in-Picture window">⧉</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
+    </div>
   </div>
   <div class="card-body">
-    <div class="workspace-top"><div><div class="eyebrow">Operations tool</div><div class="workspace-title">Format a transaction in seconds.</div><div class="workspace-subtitle">Paste raw transaction data. TxForm analyzes it, validates the details, and prepares the ticket.</div></div><div class="mode-pill" id="modePill">Auto analysis</div></div>
-    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="workspace-top">
+      <div>
+        <div class="eyebrow">Operations tool</div>
+        <div class="workspace-title">Paste. It figures out the rest.</div>
+        <div class="workspace-subtitle">Drop in the raw transaction row — TxForm detects the type, validates the details, and prepares the ticket.</div>
+      </div>
+      <div class="mode-pill" id="modePill">Auto-detect</div>
+    </div>
+
+    <div class="detect-bar" id="detectBar" data-confidence="none" aria-live="polite">
+      <span class="detect-glyph" id="detectGlyph" aria-hidden="true">◌</span>
+      <div class="detect-copy">
+        <div class="detect-title" id="detectTitle">Paste a transaction — the type is detected automatically.</div>
+        <div class="detect-sub" id="detectSub"></div>
+      </div>
+      <button type="button" class="detect-action" id="detectAction" hidden>Use it</button>
+    </div>
+
+    <div class="tabs-wrap">
+      <div class="tabs-label" id="tabsLabel">Override category (only if the detection is wrong)</div>
+      <div class="tabs" id="tabs" role="tablist" aria-labelledby="tabsLabel"></div>
+    </div>
+
+    <section class="panel queue-panel" id="queuePanel">
+      <div class="queue-head">
+        <div>
+          <div class="queue-title">Queue <span class="queue-count" id="queueCount"></span></div>
+          <div class="queue-caption">Stage several transactions and work through them back to back.</div>
+        </div>
+        <button type="button" class="icon-btn" id="queueClear" title="Clear queue" aria-label="Clear queue">✕</button>
+      </div>
+      <div class="queue-list" id="queueList"></div>
+    </section>
+
     <div class="main-grid">
       <section class="panel input-panel">
-        <div class="panel-head"><div><div class="panel-title">01 · Transaction input</div><div class="panel-caption">Tab or newline separated data</div></div><div class="panel-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M12 11v6"/><path d="M9 14l3 3 3-3"/></svg>
-        </div></div>
-        <div class="paste-section"><div class="paste-header"><label for="input">Paste transaction data</label><span class="input-meta" id="inputCount">0 fields</span></div><textarea id="input" rows="6" placeholder="Paste the transaction row here…"></textarea><div class="preview" id="preview"></div><div class="parse-status" id="parseStatus">&nbsp;</div></div>
+        <div class="panel-head">
+          <div><div class="panel-title">01 · Transaction input</div><div class="panel-caption">Tab or newline separated data</div></div>
+          <div class="panel-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M12 11v6"/><path d="M9 14l3 3 3-3"/></svg>
+          </div>
+        </div>
+        <div class="paste-section">
+          <div class="paste-header">
+            <label for="input">Paste transaction data</label>
+            <div class="paste-header-right">
+              <span class="input-meta" id="inputCount">0 fields</span>
+              <button type="button" class="mini-btn" id="stageBtn" title="Stage this row for later">＋ Stage</button>
+            </div>
+          </div>
+          <textarea id="input" rows="6" placeholder="Paste the transaction row here…"></textarea>
+          <div class="preview" id="preview"></div>
+          <div class="parse-status" id="parseStatus">&nbsp;</div>
+        </div>
         <div id="slaInfo" class="sla-info">SLA: --</div>
         <div id="dynamicFields" class="dynamic-fields"></div>
-        <div class="banner warn" id="warnBanner" role="alert"></div><div class="banner error" id="errorBanner" role="alert"></div>
-        <div class="action-bar"><button class="primary-btn" id="generateBtn"><span id="generateState">⚡ Generate & Copy</span></button><button id="copyOnlyBtn" class="copy-only" disabled>Copy output</button><button id="clearBtn" class="btn-clear">Clear</button></div>
-        <p class="kbd-hint"><kbd>Ctrl/Cmd</kbd> + <kbd>Enter</kbd> generate · <kbd>Esc</kbd> clear (only when input is empty or focused)</p>
+        <div class="banner warn" id="warnBanner" role="alert"></div>
+        <div class="banner error" id="errorBanner" role="alert"></div>
+        <div class="action-bar">
+          <button class="primary-btn" id="generateBtn"><span id="generateState">⚡ Generate &amp; Copy</span></button>
+          <button id="copyOnlyBtn" class="copy-only" disabled>Copy output</button>
+          <button id="discardBtn" class="btn-clear">Discard entry</button>
+        </div>
+        <div class="inline-confirm" id="discardConfirm" role="alertdialog" aria-label="Confirm discard">
+          <span>Discard this entry? Unsaved edits and the pasted row will be lost.</span>
+          <span class="spacer"></span>
+          <button type="button" class="danger-btn" id="discardYes">Discard</button>
+          <button type="button" class="btn-clear" id="discardNo">Cancel</button>
+        </div>
+        <p class="kbd-hint"><kbd>Ctrl/Cmd</kbd> + <kbd>Enter</kbd> generate · <kbd>Esc</kbd> closes prompts · <kbd>＋ Stage</kbd> adds to the queue</p>
       </section>
+
       <section class="panel analysis-panel">
-        <div class="panel-head"><div><div class="panel-title">02 · Live analysis</div><div class="panel-caption">What TxForm understands from your data</div></div><div class="panel-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
-        </div></div>
-        <div class="analysis-status" id="analysisState" data-state="waiting" aria-live="polite"><div class="status-left"><span class="status-dot"></span><div><div class="detection-name" id="detectionTitle"><span class="empty-state"><span class="icon">📄</span> Paste a transaction to begin</span></div><div class="detection-meta" id="analysisMeta">No transaction detected yet</div></div></div><div class="confidence" id="detectionConfidence">Standing by</div></div>
-        <div class="summary"><div class="summary-label">Extracted fields</div><div class="field-summary" id="fieldSummary"><span class="summary-empty">Waiting for transaction data…</span></div></div>
+        <div class="panel-head">
+          <div><div class="panel-title">02 · Live analysis</div><div class="panel-caption">What TxForm understands from your data</div></div>
+          <div class="panel-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
+          </div>
+        </div>
+        <div class="analysis-status" id="analysisState" data-state="waiting" aria-live="polite">
+          <div class="status-left">
+            <span class="status-dot" id="statusDot" aria-hidden="true">◌</span>
+            <div>
+              <div class="detection-name" id="detectionTitle"><span class="empty-state"><span class="icon">📄</span> Paste a transaction to begin</span></div>
+              <div class="detection-meta" id="analysisMeta">No transaction detected yet</div>
+            </div>
+          </div>
+          <div class="confidence" id="detectionConfidence">Standing by</div>
+        </div>
+        <div class="summary">
+          <div class="summary-label">Extracted fields</div>
+          <div class="field-summary" id="fieldSummary"><span class="summary-empty">Waiting for transaction data…</span></div>
+        </div>
       </section>
     </div>
-    <section class="panel output-panel"><div class="output-header"><h3>03 · Ticket preview</h3><span class="output-status" id="outputStatus">Nothing generated yet</span></div><div style="position:relative"><textarea id="output" rows="7" readonly placeholder="Your formatted ticket will appear here…"></textarea></div></section>
-    <div class="history-section" id="historySection"><div class="history-header" id="historyHeader"><h3>Recent tickets <span class="count" id="historyCount"></span> <span class="history-toggle-icon">▾</span></h3><button class="history-clear" id="historyClearBtn">Clear history</button></div><div class="history-list" id="historyList"></div></div>
-    <div class="undo-bar" id="undoBar"><span id="undoMsg">Cleared</span><button id="undoBtn">Undo</button></div>
+
+    <div class="confirm-bar" id="confirmBar" hidden role="status">
+      <span class="confirm-glyph" aria-hidden="true">✓</span>
+      <div class="confirm-copy">
+        <div class="confirm-title" id="confirmTitle"></div>
+        <div class="confirm-sub" id="confirmSub"></div>
+      </div>
+      <button type="button" class="mini-btn" id="confirmCopyBtn">Copy again</button>
+      <button type="button" class="icon-btn" id="confirmClose" aria-label="Dismiss confirmation">×</button>
+    </div>
+
+    <section class="panel output-panel">
+      <div class="output-header"><h3>03 · Ticket preview</h3><span class="output-status" id="outputStatus">Nothing generated yet</span></div>
+      <div style="position:relative"><textarea id="output" rows="7" readonly placeholder="Your formatted ticket will appear here…"></textarea></div>
+    </section>
+
+    <div class="history-section" id="historySection">
+      <div class="history-header" id="historyHeader">
+        <h3>Recent tickets <span class="count" id="historyCount"></span> <span class="history-toggle-icon">▾</span></h3>
+        <button class="history-clear" id="historyClearBtn" type="button">Clear history</button>
+      </div>
+      <div class="inline-confirm" id="historyConfirm" role="alertdialog" aria-label="Confirm clearing history">
+        <span>Clear all saved tickets? This can't be undone.</span>
+        <span class="spacer"></span>
+        <button type="button" class="danger-btn" id="historyYes">Clear all</button>
+        <button type="button" class="btn-clear" id="historyNo">Cancel</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </div>
+
+    <div id="toastMsg" class="toast" role="status">Copied</div>
   </div>
 </div></div>
-<div id="toastMsg" class="toast" role="status">Copied</div>
 <script>
 (function(){
+// ============================================================
+// POINT 8: shared document reference + PiP state
+// ------------------------------------------------------------
+// Shadow the global `document` inside this IIFE. Whenever the app is hosted
+// in a different document (i.e. inside the Document PiP window) we simply
+// reassign this binding, and every existing document.getElementById(...) /
+// querySelector(...) / addEventListener(...) in this file transparently
+// targets the right document — no other code changes needed.
+// ============================================================
+const openerDocument = window.document;
+let document = openerDocument;
+
+let pipWindow = null;        // the Window returned by documentPictureInPicture
+let pipPlaceholder = null;   // dashed card that sits in the main tab while floating
+const appNode = document.getElementById('app');
+
 // -------- UTILITY --------
 function esc(str){ if(!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function maskSensitive(str){ if(!str) return ''; const s=String(str); if(s.length<=4) return '••••'; return '••••'+s.slice(-4); }
@@ -118,7 +456,7 @@ function stripAmount(v){ if(!v) return ''; return String(v).replace(/^[-\s]+/,''
 function stripRefHash(v){ if(!v) return ''; return String(v).replace(/^#/,''); }
 function normalizeRef(v){ if(!v) return ''; return String(v).replace(/^#/,'').trim(); }
 
-// -------- BANKS with Arabic names --------
+// -------- BANKS --------
 const BANKS = [
 {name:"Banque Misr",nickname:"BM",arabic:"بنك مصر"},
 {name:"National Bank of Egypt",nickname:"NBE",arabic:"البنك الأهلي المصري"},
@@ -158,12 +496,12 @@ const BANKS = [
 {name:"Bank NXT",nickname:"NXT",arabic:"بنك نكست"}
 ];
 
-// -------- DECLARATIVE CATEGORY SCHEMA --------
+// -------- CATEGORY SCHEMA --------
 const CATS = {
 atm: {
   label:'ATM Cash Out', sla:'ATM Cash Out → 15 working days', minTokens:8,
   fields:[
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"Customer 5-digit ID"},
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"Customer 5-digit ID. You can paste straight from the Ops portal — non-digits are stripped automatically."},
     {id:'bank', label:'Bank Name', kind:'bank', required:true, tip:"Bank where ATM is located"}
   ],
   parsedFields:[
@@ -181,7 +519,7 @@ atm: {
 atm_onhold: {
   label:'ATM Cash Out - On Hold', sla:'ATM Cash Out (On Hold) → 2 working days', minTokens:8,
   fields:[
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"Customer 5-digit ID"}
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"Customer 5-digit ID. You can paste straight from the Ops portal — non-digits are stripped automatically."}
   ],
   parsedFields:[
     {id:'wallet', sourceToken:2, label:'Wallet', showInSummary:true},
@@ -199,7 +537,7 @@ fawry_onhold: {
   label:'Fawry Cash Out - On Hold', sla:'Fawry Cash Out Rejected (On Hold) → 2 working days', minTokens:8,
   fields:[
     {id:'wallet', label:'Wallet (11 digits)', kind:'digits', length:11, required:true, startsWithZero:false, tip:"11-digit wallet number"},
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID"}
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID. Paste from the Ops portal — non-digits are stripped automatically."}
   ],
   parsedFields:[
     {id:'ref', sourceToken:3, label:'Reference', showInSummary:true},
@@ -216,7 +554,7 @@ fawry_posted: {
   label:'Fawry Cash Out - Posted', sla:'Fawry Cash Out - Posted → 15 working days', minTokens:8,
   fields:[
     {id:'wallet', label:'Wallet (11 digits)', kind:'digits', length:11, required:true, startsWithZero:false, tip:"11-digit wallet number"},
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID"}
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID. Paste from the Ops portal — non-digits are stripped automatically."}
   ],
   parsedFields:[
     {id:'ref', sourceToken:3, label:'Reference', showInSummary:true},
@@ -233,7 +571,7 @@ agent_cashout_onhold: {
   label:'Agent Cash Out - On Hold', sla:'Agent Cash Out - On Hold → 2 working days', minTokens:8,
   fields:[
     {id:'wallet', label:'Wallet (11 digits)', kind:'digits', length:11, required:true, startsWithZero:false, tip:"11-digit wallet number"},
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID"}
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID. Paste from the Ops portal — non-digits are stripped automatically."}
   ],
   parsedFields:[
     {id:'ref', sourceToken:3, label:'Reference', showInSummary:true},
@@ -250,7 +588,7 @@ agent_cashout_posted: {
   label:'Agent Cash Out - Posted', sla:'Agent Cash Out - Posted → 15 working days', minTokens:8,
   fields:[
     {id:'wallet', label:'Wallet (11 digits)', kind:'digits', length:11, required:true, startsWithZero:false, tip:"11-digit wallet number"},
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID"},
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID. Paste from the Ops portal — non-digits are stripped automatically."},
     {id:'merchant', label:'Merchant Name', kind:'text', required:true, tip:"Merchant name"}
   ],
   parsedFields:[
@@ -268,7 +606,7 @@ p2m: {
   label:'Pay to Merchant', sla:'P2M → 25 working days', minTokens:8,
   fields:[
     {id:'wallet', label:'Wallet (11 digits)', kind:'digits', length:11, required:true, startsWithZero:false, tip:"11-digit wallet"},
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID"},
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID. Paste from the Ops portal — non-digits are stripped automatically."},
     {id:'merchant', label:'Merchant Name', kind:'text', required:true, tip:"Merchant name"}
   ],
   parsedFields:[
@@ -286,7 +624,7 @@ wallet_recycling: {
   label:'Wallet Recycling', sla:'Wallet Recycling → 2 working days', minTokens:5,
   fields:[
     {id:'wallet', label:'Wallet (11 digits)', kind:'digits', length:11, required:true, startsWithZero:false, tip:"11-digit wallet"},
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID"}
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID. Paste from the Ops portal — non-digits are stripped automatically."}
   ],
   parsedFields:[
     {id:'dateTime', sourceToken:2, label:'Date/Time', showInSummary:true},
@@ -301,7 +639,7 @@ send_p2p_offus: {
   label:'Send P2P (Off Us)', sla:'Send P2P (Off Us) → 2 working days', minTokens:8,
   fields:[
     {id:'senderWallet', label:'Sender Wallet (11 digits)', kind:'digits', length:11, required:true, startsWithZero:false, tip:"11-digit sender wallet"},
-    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID"}
+    {id:'id', label:'ID (5 digits)', kind:'digits', length:5, required:true, tip:"5-digit ID. Paste from the Ops portal — non-digits are stripped automatically."}
   ],
   parsedFields:[
     {id:'receiverWallet', sourceToken:2, label:'Receiver Wallet', showInSummary:true},
@@ -318,9 +656,63 @@ send_p2p_offus: {
 };
 const CAT_ORDER = ['atm','atm_onhold','fawry_onhold','fawry_posted','agent_cashout_onhold','agent_cashout_posted','p2m','wallet_recycling','send_p2p_offus'];
 
+// -------- AUTO-DETECTION --------
+const DETECT_RULES = [
+  {fam:'recycling', signature:'Wallet Recycling',   re:/wallet\s*recycl|\brecycl/i},
+  {fam:'fawry',     signature:'CashOut from Fawry', re:/fawry/i},
+  {fam:'agent',     signature:'Agent Cash Out',     re:/agent\s*cash\s*out/i},
+  {fam:'atm',       signature:'ATM Cash Out',       re:/atm\s*cash\s*out/i},
+  {fam:'p2m',       signature:'Send P2M',           re:/\bp2m\b|pay\s*to\s*merchant/i},
+  {fam:'p2p',       signature:'Send P2P',           re:/\bp2p\b/i}
+];
+
+function variantFor(fam, status){
+  if(fam === 'recycling') return {key:'wallet_recycling', variantKnown:true};
+  if(fam === 'p2m')       return {key:'p2m', variantKnown:true};
+  if(fam === 'p2p')       return {key:'send_p2p_offus', variantKnown:true};
+  const isPosted  = /post|success|complet/i.test(status);
+  const isOnHold  = /reject|fail|pending|hold/i.test(status);
+  if(fam === 'atm'){
+    if(isOnHold) return {key:'atm_onhold', variantKnown:true};
+    if(isPosted) return {key:'atm', variantKnown:true};
+    return {key:'atm', variantKnown:false};
+  }
+  if(fam === 'fawry'){
+    if(isPosted) return {key:'fawry_posted', variantKnown:true};
+    if(isOnHold) return {key:'fawry_onhold', variantKnown:true};
+    return {key:'fawry_posted', variantKnown:false};
+  }
+  if(fam === 'agent'){
+    if(isPosted) return {key:'agent_cashout_posted', variantKnown:true};
+    if(isOnHold) return {key:'agent_cashout_onhold', variantKnown:true};
+    return {key:'agent_cashout_posted', variantKnown:false};
+  }
+  return null;
+}
+
+function detectCategory(raw){
+  const text = raw || '';
+  const statusMatch = text.match(/\b(posted|rejected|failed|pending|success|successful|completed|on\s*hold)\b/i);
+  const status = statusMatch ? statusMatch[1].toLowerCase() : '';
+  let rule = null;
+  for(let i=0;i<DETECT_RULES.length;i++){ if(DETECT_RULES[i].re.test(text)){ rule = DETECT_RULES[i]; break; } }
+  if(!rule){
+    return {key:null, confidence:'low', status:status, signature:'', reason:'No signature phrase found in the row.'};
+  }
+  const v = variantFor(rule.fam, status);
+  if(!v) return {key:null, confidence:'low', status:status, signature:rule.signature, reason:'No signature phrase found in the row.'};
+  const known = v.variantKnown;
+  const reason = known
+    ? ('Matched “' + rule.signature + '”' + (statusMatch ? ' with status “' + statusMatch[1] + '”' : '') + '.')
+    : ('Matched “' + rule.signature + '” but no status token was found — the Posted / On-Hold split is a guess.');
+  return {key:v.key, confidence: known ? 'high' : 'medium', status:status, signature:rule.signature, reason:reason};
+}
+
 // -------- PERSISTENCE --------
 function loadHistory(){ try{ return JSON.parse(localStorage.getItem('txf_history')||'[]'); }catch(e){ return []; } }
 function saveHistory(arr){ try{ localStorage.setItem('txf_history', JSON.stringify(arr.slice(0,15))); }catch(e){} }
+function loadQueue(){ try{ return JSON.parse(localStorage.getItem('txf_queue')||'[]'); }catch(e){ return []; } }
+function saveQueue(arr){ try{ localStorage.setItem('txf_queue', JSON.stringify(arr)); }catch(e){} }
 
 // -------- DOM REFS --------
 const tabsEl = document.getElementById('tabs');
@@ -332,644 +724,1140 @@ const parseStatus = document.getElementById('parseStatus');
 const warnBanner = document.getElementById('warnBanner');
 const errorBanner = document.getElementById('errorBanner');
 const outputEl = document.getElementById('output');
+const outputStatus = document.getElementById('outputStatus');
 const generateBtn = document.getElementById('generateBtn');
 const copyOnlyBtn = document.getElementById('copyOnlyBtn');
-const clearBtn = document.getElementById('clearBtn');
+const discardBtn = document.getElementById('discardBtn');
+const discardConfirm = document.getElementById('discardConfirm');
+const discardYes = document.getElementById('discardYes');
+const discardNo = document.getElementById('discardNo');
+const stageBtn = document.getElementById('stageBtn');
 const toast = document.getElementById('toastMsg');
 const historySection = document.getElementById('historySection');
 const historyHeader = document.getElementById('historyHeader');
 const historyList = document.getElementById('historyList');
 const historyCount = document.getElementById('historyCount');
 const historyClearBtn = document.getElementById('historyClearBtn');
+const historyConfirm = document.getElementById('historyConfirm');
+const historyYes = document.getElementById('historyYes');
+const historyNo = document.getElementById('historyNo');
 const themeToggle = document.getElementById('themeToggle');
 const analysisState = document.getElementById('analysisState');
+const statusDot = document.getElementById('statusDot');
 const detectionTitle = document.getElementById('detectionTitle');
 const analysisMeta = document.getElementById('analysisMeta');
 const detectionConfidence = document.getElementById('detectionConfidence');
 const fieldSummary = document.getElementById('fieldSummary');
 const inputCount = document.getElementById('inputCount');
-const undoBar = document.getElementById('undoBar');
-const undoMsg = document.getElementById('undoMsg');
-const undoBtn = document.getElementById('undoBtn');
+const modePill = document.getElementById('modePill');
+const detectBar = document.getElementById('detectBar');
+const detectGlyph = document.getElementById('detectGlyph');
+const detectTitle = document.getElementById('detectTitle');
+const detectSub = document.getElementById('detectSub');
+const detectAction = document.getElementById('detectAction');
+const queuePanel = document.getElementById('queuePanel');
+const queueList = document.getElementById('queueList');
+const queueCount = document.getElementById('queueCount');
+const queueClear = document.getElementById('queueClear');
+const confirmBar = document.getElementById('confirmBar');
+const confirmTitle = document.getElementById('confirmTitle');
+const confirmSub = document.getElementById('confirmSub');
+const confirmCopyBtn = document.getElementById('confirmCopyBtn');
+const confirmClose = document.getElementById('confirmClose');
+const pipBtn = document.getElementById('pipBtn');
 
-let activeKey = (()=>{ let k=localStorage.getItem('txf_last_category'); return CATS[k]?k:CAT_ORDER[0]; })();
+// -------- STATE --------
+let activeKey = (function(){ const k = localStorage.getItem('txf_last_category'); return CATS[k] ? k : CAT_ORDER[0]; })();
 let bankDropdown = null;
 let lastOutputText = '';
 let previewTimer = null;
 let currentParsed = {};
 let currentTokens = [];
 let resizeTimeout = null;
+let overrideLocked = false;
+let lastDetection = null;
+let queue = loadQueue();
+let queueActiveId = null;
+let lastGenerated = null;
 
 // -------- THEME --------
 function setTheme(dark){ document.documentElement.classList.toggle('dark', dark); localStorage.setItem('txf_theme', dark?'dark':'light'); }
-function toggleTheme(){ setTheme(!document.documentElement.classList.contains('dark')); }
-themeToggle.addEventListener('click', toggleTheme);
+themeToggle.addEventListener('click', function(){ setTheme(!document.documentElement.classList.contains('dark')); });
 if(localStorage.getItem('txf_theme')==='dark') setTheme(true);
 
 // -------- TOAST --------
 function showToast(msg){ toast.textContent=msg; toast.classList.remove('show'); void toast.offsetWidth; toast.classList.add('show'); }
 
 // -------- TABS --------
-function checkTabOverflow(){
-const isOverflowing = tabsEl.scrollWidth > tabsEl.clientWidth;
-tabsEl.classList.toggle('overflowing', isOverflowing);
-}
+function checkTabOverflow(){ tabsEl.classList.toggle('overflowing', tabsEl.scrollWidth > tabsEl.clientWidth); }
 
 function renderTabs(){
-tabsEl.innerHTML='';
-CAT_ORDER.forEach(k=>{
-const b=document.createElement('button'); b.type='button'; b.className='tab';
-b.textContent=CATS[k].label; b.setAttribute('role','tab');
-b.setAttribute('aria-selected', k===activeKey?'true':'false');
-b.dataset.key=k;
-b.addEventListener('click',()=>{ if(k===activeKey)return; activeKey=k; localStorage.setItem('txf_last_category',k); renderTabs(); renderCategory(); });
-tabsEl.appendChild(b);
-});
-const tabs = tabsEl.querySelectorAll('.tab');
-tabs.forEach((tab, idx) => {
-tab.addEventListener('keydown', (e) => {
-if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); const nxt=(idx+1)%tabs.length; tabs[nxt].focus(); tabs[nxt].click(); }
-if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); const prv=(idx-1+tabs.length)%tabs.length; tabs[prv].focus(); tabs[prv].click(); }
-});
-});
-checkTabOverflow();
+  tabsEl.innerHTML='';
+  CAT_ORDER.forEach(function(k){
+    const b=document.createElement('button'); b.type='button'; b.className='tab';
+    b.textContent=CATS[k].label; b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', k===activeKey?'true':'false');
+    b.tabIndex = k===activeKey ? 0 : -1;
+    b.dataset.key=k;
+    b.addEventListener('click', function(){
+      if(k===activeKey) return;
+      overrideLocked = true;
+      switchCategory(k);
+      renderDetectionBar();
+      updateModePill();
+    });
+    tabsEl.appendChild(b);
+  });
+  const tabs = tabsEl.querySelectorAll('.tab');
+  tabs.forEach(function(tab, idx){
+    tab.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); const nxt=(idx+1)%tabs.length; tabs[nxt].focus(); tabs[nxt].click(); }
+      if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); const prv=(idx-1+tabs.length)%tabs.length; tabs[prv].focus(); tabs[prv].click(); }
+    });
+  });
+  checkTabOverflow();
+}
+window.addEventListener('resize', function(){ clearTimeout(resizeTimeout); resizeTimeout=setTimeout(checkTabOverflow,150); });
+
+// -------- FIELD HELPERS --------
+function captureFieldValues(){
+  const out={};
+  const cat=CATS[activeKey];
+  cat.fields.forEach(function(f){
+    if(f.kind==='bank'){ if(bankDropdown) out[f.id]=bankDropdown.getValue(); }
+    else { const el=document.getElementById(f.id); if(el) out[f.id]=el.value; }
+  });
+  return out;
+}
+function restoreFieldValues(vals){
+  if(!vals) return;
+  const cat=CATS[activeKey];
+  cat.fields.forEach(function(f){
+    if(vals[f.id]===undefined) return;
+    if(f.kind==='bank'){
+      if(bankDropdown){ bankDropdown.input.value=vals[f.id]; bankDropdown.hidden.value=vals[f.id]; }
+    } else {
+      const el=document.getElementById(f.id); if(el) el.value=vals[f.id];
+    }
+  });
+}
+function clearAllFields(){
+  const cat=CATS[activeKey];
+  cat.fields.forEach(function(f){
+    if(f.kind==='bank'){ if(bankDropdown){ bankDropdown.input.value=''; bankDropdown.hidden.value=''; } }
+    else { const el=document.getElementById(f.id); if(el){ el.value=''; el.classList.remove('error'); } const m=document.getElementById(f.id+'Msg'); if(m){ m.textContent=''; m.style.color=''; } }
+  });
 }
 
-// Debounced resize listener
-window.addEventListener('resize', () => {
-clearTimeout(resizeTimeout);
-resizeTimeout = setTimeout(checkTabOverflow, 150);
-});
-
-// -------- FIELDS --------
+// -------- ID field — paste-detection + smart validation + autofill hooks --------
 function attachDigitValidation(el, len, startsWithZero){
-const msg=document.getElementById(el.id+'Msg');
-el.addEventListener('input',()=>{
-  el.value=el.value.replace(/\D/g,'').slice(0,len);
-  let bad = false;
-  let errorMsg = '';
-  if(el.value.length > 0 && el.value.length !== len){
-    bad = true;
-    errorMsg = `exactly ${len} digits (${el.value.length}/${len})`;
-  } else if(startsWithZero && el.value.length > 0 && el.value[0] !== '0'){
-    bad = true;
-    errorMsg = `must start with 0`;
+  if(!el) return;
+  const msg=document.getElementById(el.id+'Msg');
+  function evaluate(showLengthError){
+    let bad=false, errorMsg='';
+    if(el.value.length>0 && el.value.length!==len){ bad=true; errorMsg='exactly '+len+' digits ('+el.value.length+'/'+len+')'; }
+    else if(startsWithZero && el.value.length>0 && el.value[0]!=='0'){ bad=true; errorMsg='must start with 0'; }
+    el.classList.toggle('error', bad && showLengthError!==false);
+    if(msg && msg.style.color!=='rgb(4, 122, 101)'){ msg.textContent = bad ? errorMsg : ''; }
+    return bad;
   }
-  el.classList.toggle('error',bad);
-  if(msg) msg.textContent = bad ? errorMsg : '';
-});
-el.addEventListener('blur',()=>{
-  let bad = false;
-  let errorMsg = '';
-  if(el.value.length > 0 && el.value.length !== len){
-    bad = true;
-    errorMsg = `exactly ${len} digits`;
-  } else if(startsWithZero && el.value.length > 0 && el.value[0] !== '0'){
-    bad = true;
-    errorMsg = `must start with 0`;
-  }
-  el.classList.toggle('error',bad);
-  if(msg) msg.textContent = bad ? errorMsg : '';
-});
+  el.addEventListener('input', function(){ evaluate(true); });
+  el.addEventListener('blur', function(){ evaluate(true); });
+
+  el.addEventListener('paste', function(e){
+    const cd = e.clipboardData || window.clipboardData;
+    const txt = cd ? (cd.getData('text') || '') : '';
+    const digits = txt.replace(/\D/g,'');
+    if(!digits) return;
+    e.preventDefault();
+    const start = (el.selectionStart===null||el.selectionStart===undefined) ? el.value.length : el.selectionStart;
+    const end   = (el.selectionEnd===null||el.selectionEnd===undefined) ? el.value.length : el.selectionEnd;
+    const next  = (el.value.slice(0,start) + digits + el.value.slice(end)).replace(/\D/g,'').slice(0,len);
+    el.value = next;
+    el.dispatchEvent(new Event('input', {bubbles:true}));
+    if(txt !== digits) flagAutoFilled(el);
+  });
 }
+function flagAutoFilled(el){
+  const msg=document.getElementById(el.id+'Msg');
+  if(!msg) return;
+  msg.textContent='Digits extracted from pasted text';
+  msg.style.color='var(--accent-dark)';
+  setTimeout(function(){ msg.style.color=''; msg.textContent=''; }, 2600);
+}
+
+// -------- BANK DROPDOWN --------
 function createBankDropdown(containerId, fieldId){
-const container=document.getElementById(containerId); if(!container) return null;
-container.innerHTML='';
-const wrap=document.createElement('div'); wrap.className='searchable-dropdown';
-const inp=document.createElement('input'); inp.type='text'; inp.placeholder='Type bank name, code, or Arabic…'; inp.id=fieldId+'_input';
-const hidden=document.createElement('input'); hidden.type='hidden'; hidden.id=fieldId+'_value';
-const list=document.createElement('div'); list.className='dropdown-list';
-function render(q){
-list.innerHTML=''; const term=q.toLowerCase().trim(); let count=0;
-BANKS.forEach(b=>{
-const searchFields = [b.name.toLowerCase(), b.nickname.toLowerCase(), b.arabic.toLowerCase()];
-const matches = term === '' || searchFields.some(f => f.includes(term));
-if(matches){
-const item=document.createElement('div'); item.className='dropdown-item';
-let englishDisplay = esc(b.name);
-if(term && b.name.toLowerCase().includes(term)){
-  const idx = b.name.toLowerCase().indexOf(term);
-  englishDisplay = esc(b.name.slice(0,idx)) + '<mark>' + esc(b.name.slice(idx, idx+term.length)) + '</mark>' + esc(b.name.slice(idx+term.length));
-}
-let arabicDisplay = esc(b.arabic);
-if(term && b.arabic.toLowerCase().includes(term)){
-  const idx = b.arabic.toLowerCase().indexOf(term);
-  arabicDisplay = esc(b.arabic.slice(0,idx)) + '<mark>' + esc(b.arabic.slice(idx, idx+term.length)) + '</mark>' + esc(b.arabic.slice(idx+term.length));
-}
-item.innerHTML = `
-  <div class="english-name">${englishDisplay}</div>
-  <div class="arabic-name">${arabicDisplay}</div>
-  <div class="code-badge">${esc(b.nickname)}</div>
-`;
-item.addEventListener('click',()=>{ inp.value=b.name; hidden.value=b.name; list.classList.remove('show'); const e=new Event('change'); hidden.dispatchEvent(e); triggerAnalysis(); });
-list.appendChild(item); count++;
-}
-});
-if(count===0&&term){ const e=document.createElement('div'); e.className='dropdown-item empty'; e.textContent='No banks found'; list.appendChild(e); }
-}
-inp.addEventListener('input',()=>{ hidden.value=''; render(inp.value); list.classList.toggle('show', inp.value.trim()!==''); });
-inp.addEventListener('focus',()=>{ render(inp.value); list.classList.add('show'); });
-document.addEventListener('click',e=>{ if(!wrap.contains(e.target)) list.classList.remove('show'); });
-render('');
-wrap.append(inp,hidden,list); container.appendChild(wrap);
-return { getValue:()=>hidden.value, reset:()=>{ inp.value=''; hidden.value=''; render(''); }, input:inp, hidden:hidden };
+  const container=document.getElementById(containerId); if(!container) return null;
+  container.innerHTML='';
+  const wrap=document.createElement('div'); wrap.className='searchable-dropdown';
+  const inp=document.createElement('input'); inp.type='text'; inp.placeholder='Type bank name, code, or Arabic…'; inp.id=fieldId+'_input'; inp.autocomplete='off';
+  const hidden=document.createElement('input'); hidden.type='hidden'; hidden.id=fieldId+'_value';
+  const list=document.createElement('div'); list.className='dropdown-list';
+
+  function render(q){
+    list.innerHTML=''; const term=(q||'').toLowerCase().trim(); let count=0;
+    BANKS.forEach(function(b){
+      const searchFields=[b.name.toLowerCase(), b.nickname.toLowerCase(), b.arabic.toLowerCase()];
+      const matches = term==='' || searchFields.some(function(f){ return f.indexOf(term)!==-1; });
+      if(!matches) return;
+      const item=document.createElement('div'); item.className='dropdown-item';
+      let englishDisplay=esc(b.name);
+      if(term && b.name.toLowerCase().indexOf(term)!==-1){
+        const idx=b.name.toLowerCase().indexOf(term);
+        englishDisplay=esc(b.name.slice(0,idx))+'<mark>'+esc(b.name.slice(idx,idx+term.length))+'</mark>'+esc(b.name.slice(idx+term.length));
+      }
+      let arabicDisplay=esc(b.arabic);
+      if(term && b.arabic.toLowerCase().indexOf(term)!==-1){
+        const idx=b.arabic.toLowerCase().indexOf(term);
+        arabicDisplay=esc(b.arabic.slice(0,idx))+'<mark>'+esc(b.arabic.slice(idx,idx+term.length))+'</mark>'+esc(b.arabic.slice(idx+term.length));
+      }
+      item.innerHTML='<div class="english-name">'+englishDisplay+'</div><div class="arabic-name">'+arabicDisplay+'</div><div class="code-badge">'+esc(b.nickname)+'</div>';
+      item.addEventListener('click', function(){
+        inp.value=b.name; hidden.value=b.name; list.classList.remove('show');
+        triggerAnalysis();
+      });
+      list.appendChild(item); count++;
+    });
+    if(count===0 && term){ const e=document.createElement('div'); e.className='dropdown-item empty'; e.textContent='No banks found'; list.appendChild(e); }
+  }
+  inp.addEventListener('input', function(){ hidden.value=''; render(inp.value); list.classList.toggle('show', inp.value.trim()!==''); });
+  inp.addEventListener('focus', function(){ render(inp.value); list.classList.add('show'); });
+  // NOTE: the outside-click close is handled by the global handleDocClick —
+  // no per-dropdown listener here (that would leak a listener per re-render).
+  render('');
+  wrap.append(inp, hidden, list); container.appendChild(wrap);
+  return { getValue:function(){ return hidden.value; }, input:inp, hidden:hidden };
 }
 
+// -------- Tooltips work on click / tap / keyboard, not just hover --------
+function wireHelpIcons(){
+  dynamicContainer.querySelectorAll('.help-icon').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      const isOpen = btn.classList.contains('open');
+      closeAllTooltips();
+      if(!isOpen){ btn.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+    btn.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); btn.click(); }
+    });
+  });
+}
+function closeAllTooltips(){
+  dynamicContainer.querySelectorAll('.help-icon').forEach(function(o){
+    o.classList.remove('open'); o.setAttribute('aria-expanded','false');
+  });
+}
+
+// -------- FIELD PASTE BUTTONS --------
+function wireFieldPasteButtons(){
+  dynamicContainer.querySelectorAll('.field-paste-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      const target = document.getElementById(btn.dataset.target);
+      const f = CATS[activeKey].fields.filter(function(x){ return x.id===btn.dataset.target; })[0];
+      if(!target || !f) return;
+      if(!navigator.clipboard || !navigator.clipboard.readText){ showToast('Clipboard not available'); return; }
+      navigator.clipboard.readText().then(function(txt){
+        const digits=(txt||'').replace(/\D/g,'');
+        if(!digits){ showToast('No digits on the clipboard'); return; }
+        target.value = digits.slice(0, f.length);
+        target.dispatchEvent(new Event('input', {bubbles:true}));
+        flagAutoFilled(target);
+        showToast('Filled from clipboard');
+        triggerAnalysis();
+      }).catch(function(){ showToast('Clipboard access blocked'); });
+    });
+  });
+}
+
+// -------- PARSING --------
 function parseTokens(cat, tokens){
-const result={};
-if(cat.parsedFields){
-cat.parsedFields.forEach(pf=>{
-let val='';
-if(pf.sourceToken>=0 && pf.sourceToken < tokens.length) val=tokens[pf.sourceToken];
-else if(pf.sourceToken===-1 && pf.transform) val=pf.transform(tokens);
-if(pf.transform && pf.sourceToken>=0) val=pf.transform(val);
-result[pf.id]=val||'';
-});
-}
-return result;
-}
-
-function renderCategory(){
-const mainGrid = document.querySelector('.main-grid');
-const outputPanel = document.querySelector('.output-panel');
-const historySection = document.querySelector('.history-section');
-const components = [mainGrid, outputPanel, historySection];
-components.forEach(el => { if(el) el.style.transition = 'opacity .2s ease, transform .2s ease'; if(el) el.style.opacity = '0'; if(el) el.style.transform = 'translateY(6px)'; });
-
-setTimeout(() => {
-const cat=CATS[activeKey];
-slaInfo.innerHTML=`SLA: <strong>${esc(cat.sla)}</strong>`;
-dynamicContainer.innerHTML=cat.fields.map(f=>{
-const star=f.required?' <span class="req-mark">*</span>':'';
-if(f.kind==='bank') return `<div class="field"><div class="field-label-wrapper"><label>${esc(f.label)}${star}</label><span class="help-icon" tabindex="0">?<span class="tooltip">${esc(f.tip)}</span></span></div><div id="${f.id}Container"></div></div>`;
-if(f.kind==='digits') return `<div class="field"><div class="field-label-wrapper"><label>${esc(f.label)}${star}</label><span class="help-icon" tabindex="0">?<span class="tooltip">${esc(f.tip)}</span></span></div><input type="text" id="${f.id}" placeholder="${esc(f.length)}-digit" maxlength="${f.length}" inputmode="numeric"><div class="field-msg" id="${f.id}Msg"></div></div>`;
-return `<div class="field"><div class="field-label-wrapper"><label>${esc(f.label)}${star}</label><span class="help-icon" tabindex="0">?<span class="tooltip">${esc(f.tip)}</span></span></div><input type="text" id="${f.id}" placeholder="${esc(f.label)}"><div class="field-msg" id="${f.id}Msg"></div></div>`;
-}).join('');
-bankDropdown=null;
-cat.fields.forEach(f=>{
-if(f.kind==='digits') attachDigitValidation(document.getElementById(f.id), f.length, f.startsWithZero || false);
-else if(f.kind==='bank'){ bankDropdown=createBankDropdown(f.id+'Container', f.id); }
-});
-inputEl.value=''; previewEl.innerHTML=''; parseStatus.textContent='\u00A0';
-errorBanner.classList.remove('show'); warnBanner.classList.remove('show');
-outputEl.value=''; lastOutputText='';
-currentParsed={}; currentTokens=[];
-resetAnalysis();
-copyOnlyBtn.disabled=true;
-
-components.forEach(el => { if(el) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; } });
-}, 200);
+  const result={};
+  if(cat.parsedFields){
+    cat.parsedFields.forEach(function(pf){
+      let val='';
+      if(pf.sourceToken>=0 && pf.sourceToken<tokens.length) val=tokens[pf.sourceToken];
+      else if(pf.sourceToken===-1 && pf.transform) val=pf.transform(tokens);
+      if(pf.transform && pf.sourceToken>=0) val=pf.transform(val);
+      result[pf.id]=val||'';
+    });
+  }
+  return result;
 }
 
+// -------- RENDER CATEGORY --------
+function renderCategory(opts){
+  opts = opts || {};
+  const cat = CATS[activeKey];
+
+  slaInfo.innerHTML = 'SLA: <strong>'+esc(cat.sla)+'</strong>';
+
+  dynamicContainer.innerHTML = cat.fields.map(function(f){
+    const star = f.required ? ' <span class="req-mark" aria-hidden="true">*</span>' : '';
+    const tipId = f.id+'_tip';
+    const help = '<button type="button" class="help-icon" aria-describedby="'+tipId+'" aria-expanded="false" aria-label="Help for '+esc(f.label)+'">?'
+               + '<span class="tooltip" role="tooltip" id="'+tipId+'">'+esc(f.tip)+'</span></button>';
+
+    if(f.kind==='bank'){
+      const labelRow = '<div class="field-label-wrapper"><label for="'+f.id+'_input">'+esc(f.label)+star+'</label>'+help+'</div>';
+      return '<div class="field">'+labelRow+'<div id="'+f.id+'Container"></div></div>';
+    }
+    const labelRow = '<div class="field-label-wrapper"><label for="'+f.id+'">'+esc(f.label)+star+'</label>'+help+'</div>';
+    if(f.kind==='digits'){
+      return '<div class="field">'+labelRow
+        + '<div class="input-with-action">'
+        +   '<input type="text" id="'+f.id+'" placeholder="'+f.length+'-digit" maxlength="'+f.length+'" inputmode="numeric" autocomplete="off" spellcheck="false"'
+        +   ' data-autofill="'+esc(f.id)+'" data-field-kind="digits" data-autofill-ready="true">'
+        +   '<button type="button" class="field-paste-btn" data-target="'+f.id+'" title="Paste from clipboard" aria-label="Paste '+esc(f.label)+' from clipboard">⤓</button>'
+        + '</div>'
+        + '<div class="field-msg" id="'+f.id+'Msg"></div></div>';
+    }
+    return '<div class="field">'+labelRow
+      + '<input type="text" id="'+f.id+'" placeholder="'+esc(f.label)+'" autocomplete="off" data-field-kind="text" data-autofill="'+esc(f.id)+'">'
+      + '<div class="field-msg" id="'+f.id+'Msg"></div></div>';
+  }).join('');
+
+  bankDropdown = null;
+  cat.fields.forEach(function(f){
+    if(f.kind==='bank'){ bankDropdown = createBankDropdown(f.id+'Container', f.id); }
+    else if(f.kind==='digits'){ attachDigitValidation(document.getElementById(f.id), f.length, f.startsWithZero||false); }
+  });
+
+  wireHelpIcons();
+  wireFieldPasteButtons();
+
+  if(opts.fieldValues) restoreFieldValues(opts.fieldValues);
+  inputEl.value = (opts.inputValue!==undefined) ? opts.inputValue : '';
+
+  previewEl.innerHTML='';
+  parseStatus.textContent='\u00A0';
+  errorBanner.classList.remove('show');
+  warnBanner.classList.remove('show');
+  currentParsed={}; currentTokens=[];
+  copyOnlyBtn.disabled = !lastOutputText;
+
+  if(inputEl.value.trim()){ renderPreview(); }
+  else {
+    inputCount.textContent='0 fields';
+    lastDetection=null;
+    resetAnalysis();
+    renderDetectionBar();
+  }
+}
+
+function switchCategory(key, opts){
+  opts = opts || {};
+  if(!CATS[key] || key===activeKey) return;
+  const fieldValues = opts.fieldValues || captureFieldValues();
+  const inputValue = (opts.inputValue!==undefined) ? opts.inputValue : inputEl.value;
+  activeKey = key;
+  localStorage.setItem('txf_last_category', key);
+  renderTabs();
+  renderCategory({inputValue: inputValue, fieldValues: fieldValues});
+  renderDetectionBar();
+  updateModePill();
+}
+
+// -------- ANALYSIS STATE --------
 function resetAnalysis(){
-analysisState.dataset.state='waiting';
-detectionTitle.innerHTML='<span class="empty-state"><span class="icon">📄</span> Paste a transaction to begin</span>';
-analysisMeta.textContent='No transaction detected yet';
-detectionConfidence.textContent='Standing by';
-fieldSummary.innerHTML='<span class="summary-empty">Waiting for transaction data…</span>';
+  analysisState.dataset.state='waiting';
+  statusDot.textContent='◌';
+  detectionTitle.innerHTML='<span class="empty-state"><span class="icon">📄</span> Paste a transaction to begin</span>';
+  analysisMeta.textContent='No transaction detected yet';
+  detectionConfidence.textContent='Standing by';
+  fieldSummary.innerHTML='<span class="summary-empty">Waiting for transaction data…</span>';
+}
+
+// -------- DETECTION BAR --------
+function renderDetectionBar(){
+  const hasInput = inputEl.value.trim() !== '';
+  if(!hasInput){
+    detectBar.dataset.confidence='none';
+    detectGlyph.textContent='◌';
+    detectTitle.textContent='Paste a transaction — the type is detected automatically.';
+    detectSub.textContent='';
+    detectAction.hidden=true;
+    return;
+  }
+  const det = lastDetection;
+  if(!det || !det.key){
+    detectBar.dataset.confidence='low';
+    detectGlyph.textContent='?';
+    detectTitle.innerHTML="Couldn't detect the transaction type";
+    detectSub.textContent='Choose a category from the override row below.';
+    detectAction.hidden=true;
+    return;
+  }
+  const detectedLabel = CATS[det.key].label;
+
+  if(overrideLocked){
+    detectBar.dataset.confidence='manual';
+    detectGlyph.textContent='✎';
+    detectTitle.innerHTML='Manual category: <strong>'+esc(CATS[activeKey].label)+'</strong>';
+    const same = det.key === activeKey;
+    detectSub.textContent = same ? 'Matches the auto-detected type.' : 'Auto-detect suggests “'+detectedLabel+'”.';
+    detectAction.hidden = same;
+    if(!same){ detectAction.textContent='Use '+detectedLabel; }
+    return;
+  }
+
+  if(det.confidence==='high'){
+    detectBar.dataset.confidence='high';
+    detectGlyph.textContent='✓';
+    detectTitle.innerHTML='Detected: <strong>'+esc(detectedLabel)+'</strong>';
+    detectSub.textContent=det.reason;
+    detectAction.hidden=true;
+  } else {
+    detectBar.dataset.confidence='medium';
+    detectGlyph.textContent='~';
+    detectTitle.innerHTML='Best guess: <strong>'+esc(detectedLabel)+'</strong>';
+    detectSub.textContent=det.reason+' Override below if that’s wrong.';
+    detectAction.hidden=true;
+  }
+}
+
+detectAction.addEventListener('click', function(){
+  if(!lastDetection || !lastDetection.key) return;
+  overrideLocked = false;
+  switchCategory(lastDetection.key, {inputValue: inputEl.value, fieldValues: captureFieldValues()});
+  renderDetectionBar();
+  updateModePill();
+});
+
+function updateModePill(){
+  if(overrideLocked) modePill.textContent='Manual override';
+  else if(lastDetection && lastDetection.confidence==='high') modePill.textContent='Auto-detected';
+  else if(lastDetection && lastDetection.confidence==='medium') modePill.textContent='Auto-detect · confirm';
+  else modePill.textContent='Auto-detect';
+}
+
+// -------- Status is never colour-only --------
+function statusGlyph(status){
+  if(status==='ok') return '✓';
+  if(status==='review') return '!';
+  return '✕';
+}
+function statusWord(status){
+  if(status==='ok') return 'Valid';
+  if(status==='review') return 'Needs review';
+  return 'Missing';
 }
 
 // -------- LIVE ANALYSIS --------
 function triggerAnalysis(){
-const tokens=tokenize(inputEl.value);
-currentTokens=tokens;
-if(!tokens.length){ resetAnalysis(); return; }
-try {
-const cat=CATS[activeKey];
-currentParsed=parseTokens(cat, tokens);
-updateAnalysis(currentParsed, tokens);
-} catch(ex){}
+  const tokens=tokenize(inputEl.value);
+  currentTokens=tokens;
+  if(!tokens.length){ resetAnalysis(); return; }
+  const cat=CATS[activeKey];
+  currentParsed=parseTokens(cat, tokens);
+  updateAnalysis(currentParsed, tokens);
 }
 
 function updateAnalysis(parsed, tokens){
-const cat=CATS[activeKey];
-const items=[];
+  const cat=CATS[activeKey];
+  const items=[];
 
-if(cat.parsedFields){
-cat.parsedFields.forEach(pf => {
-if(pf.showInSummary !== false && parsed[pf.id] !== undefined){
-let status='ok', label=pf.label;
-let value=parsed[pf.id]||'—';
-if(!parsed[pf.id]){ status='missing'; }
-else if(pf.id==='amount' && isBlankAmount(parsed[pf.id])){ status='missing'; }
-else if(pf.id==='amount' && !isPlausibleAmount(parsed[pf.id])){ status='review'; }
-items.push({label, value, status, isManual: false});
-}
-});
-}
-
-cat.fields.forEach(f => {
-if(f.kind==='bank'){
-const val = bankDropdown ? bankDropdown.getValue() : '';
-items.push({
-label: f.label,
-value: val || '—',
-status: val ? 'ok' : 'missing',
-isManual: true
-});
-} else if(f.kind==='digits' || f.kind==='text'){
-const el = document.getElementById(f.id);
-const val = el ? el.value.trim() : '';
-let status = 'missing';
-if(f.kind==='digits'){
-if(val && val.length === f.length){
-  if(f.startsWithZero && val[0] !== '0'){
-    status = 'review';
-  } else {
-    status = 'ok';
+  if(cat.parsedFields){
+    cat.parsedFields.forEach(function(pf){
+      if(pf.showInSummary===false || parsed[pf.id]===undefined) return;
+      let status='ok';
+      let value=parsed[pf.id]||'—';
+      if(!parsed[pf.id]) status='missing';
+      else if(pf.id==='amount' && isBlankAmount(parsed[pf.id])) status='missing';
+      else if(pf.id==='amount' && !isPlausibleAmount(parsed[pf.id])) status='review';
+      items.push({label:pf.label, value:value, status:status});
+    });
   }
-} else if(val && val.length !== f.length){
-  status = 'review';
-}
-} else {
-if(val) status = 'ok';
-}
-items.push({
-label: f.label,
-value: val || '—',
-status: status,
-isManual: true
-});
-}
-});
 
-if(activeKey==='wallet_recycling' && parsed.dateTime){
-if(!looksLikeDate(parsed.dateTime) && !looksLikeTime(parsed.dateTime)){
-const dtItem = items.find(i => i.label === 'Date/Time');
-if(dtItem) dtItem.status = 'review';
-}
-}
-if(activeKey==='wallet_recycling' && parsed.amount && isBlankAmount(parsed.amount)){
-const amtItem = items.find(i => i.label === 'Amount');
-if(amtItem) amtItem.status = 'missing';
-}
+  cat.fields.forEach(function(f){
+    if(f.kind==='bank'){
+      const val = bankDropdown ? bankDropdown.getValue() : '';
+      items.push({label:f.label, value:val||'—', status: val ? 'ok':'missing'});
+    } else if(f.kind==='digits' || f.kind==='text'){
+      const el=document.getElementById(f.id);
+      const val = el ? el.value.trim() : '';
+      let status='missing';
+      if(f.kind==='digits'){
+        if(val && val.length===f.length){
+          status = (f.startsWithZero && val[0]!=='0') ? 'review' : 'ok';
+        } else if(val && val.length!==f.length){
+          status='review';
+        }
+      } else if(val){ status='ok'; }
+      items.push({label:f.label, value:val||'—', status:status});
+    }
+  });
 
-const container=fieldSummary;
-if(items.length){
-container.innerHTML = items.map((i,idx)=>`
-<div class="summary-item ${i.status}" style="transition-delay:${idx*30}ms">
-<span class="summary-dot"></span>
-<span>${esc(i.label)}</span>
-<strong>${esc(i.value)}</strong>
-</div>
-`).join('');
-requestAnimationFrame(()=>{
-container.querySelectorAll('.summary-item').forEach((el, i)=>{
-setTimeout(()=>el.classList.add('visible'), i*30);
-});
-});
-} else {
-container.innerHTML='<span class="summary-empty">No fields extracted yet</span>';
-}
+  if(activeKey==='wallet_recycling' && parsed.dateTime){
+    if(!looksLikeDate(parsed.dateTime) && !looksLikeTime(parsed.dateTime)){
+      const dtItem=items.filter(function(i){ return i.label==='Date/Time'; })[0];
+      if(dtItem) dtItem.status='review';
+    }
+  }
+  if(activeKey==='wallet_recycling' && parsed.amount && isBlankAmount(parsed.amount)){
+    const amtItem=items.filter(function(i){ return i.label==='Amount'; })[0];
+    if(amtItem) amtItem.status='missing';
+  }
 
-// Category mismatch detection: check status token against active tab
-const statusToken = tokens.find(t => /^(Rejected|Posted|Failed|Pending)$/.test(t));
-if(statusToken){
-const expectedStatus = activeKey.includes('posted') ? 'Posted' : 
-                       activeKey.includes('onhold') ? 'Rejected' : 
-                       activeKey.includes('recycling') ? null : null;
-if(expectedStatus && statusToken !== expectedStatus){
-items.push({
-label: '⚠️ Category mismatch',
-value: `Status "${statusToken}" doesn't match "${CATS[activeKey].label}"`,
-status: 'review',
-isManual: false
-});
-analysisState.dataset.state='review';
-detectionTitle.textContent=cat.label;
-detectionConfidence.textContent='⚠️ Status mismatch';
-}
-}
+  if(items.length){
+    fieldSummary.innerHTML = items.map(function(i,idx){
+      return '<div class="summary-item '+i.status+'" style="transition-delay:'+(idx*30)+'ms">'
+        + '<span class="summary-status" aria-hidden="true">'+statusGlyph(i.status)+'</span>'
+        + '<span class="sr-only">'+statusWord(i.status)+':</span>'
+        + '<span>'+esc(i.label)+'</span>'
+        + '<strong>'+esc(i.value)+'</strong>'
+        + '</div>';
+    }).join('');
+    requestAnimationFrame(function(){
+      fieldSummary.querySelectorAll('.summary-item').forEach(function(el,i){
+        setTimeout(function(){ el.classList.add('visible'); }, i*30);
+      });
+    });
+  } else {
+    fieldSummary.innerHTML='<span class="summary-empty">No fields extracted yet</span>';
+  }
 
-const hasMissing = items.some(i => i.status === 'missing' || i.status === 'review');
-const hasData = tokens.length > 0;
-if(!hasData){ resetAnalysis(); }
-else if(hasMissing){
-analysisState.dataset.state='review';
-detectionTitle.textContent=cat.label;
-const okCount = items.filter(i => i.status === 'ok').length;
-const problemCount = items.filter(i => i.status === 'missing' || i.status === 'review').length;
-analysisMeta.textContent=`${tokens.length} fields extracted — ${okCount} valid, ${problemCount} need attention`;
-if(!detectionConfidence.textContent.includes('Status mismatch')){
-detectionConfidence.textContent='⚠️ Needs review';
-}
-} else {
-analysisState.dataset.state='ready';
-detectionTitle.textContent=cat.label;
-analysisMeta.textContent=`${tokens.length} fields — all valid`;
-detectionConfidence.textContent='✓ Ready';
-}
-copyOnlyBtn.disabled=!lastOutputText;
+  const hasMissing = items.some(function(i){ return i.status==='missing' || i.status==='review'; });
+  if(!tokens.length){ resetAnalysis(); }
+  else if(hasMissing){
+    analysisState.dataset.state='review';
+    statusDot.textContent='!';
+    detectionTitle.textContent=cat.label;
+    const okCount = items.filter(function(i){ return i.status==='ok'; }).length;
+    const problemCount = items.filter(function(i){ return i.status!=='ok'; }).length;
+    analysisMeta.textContent = tokens.length+' fields extracted — '+okCount+' valid, '+problemCount+' need attention';
+    detectionConfidence.textContent='⚠ Needs review';
+  } else {
+    analysisState.dataset.state='ready';
+    statusDot.textContent='✓';
+    detectionTitle.textContent=cat.label;
+    analysisMeta.textContent = tokens.length+' fields — all valid';
+    detectionConfidence.textContent='✓ Ready';
+  }
+  copyOnlyBtn.disabled = !lastOutputText;
 }
 
 // -------- LIVE PARSE --------
 function renderPreview(){
-const cat=CATS[activeKey]; 
-const raw=inputEl.value;
-const tokens=tokenize(raw);
-currentTokens=tokens;
-previewEl.innerHTML='';
-inputCount.textContent=tokens.length+' fields';
-if(!tokens.length){ parseStatus.textContent='\u00A0'; resetAnalysis(); return; }
-const ok=tokens.length>=cat.minTokens;
-parseStatus.textContent=`${tokens.length} field${tokens.length===1?'':'s'} · needs ${cat.minTokens}${ok?' ✅':''}`;
-parseStatus.style.color=ok?'':'var(--danger)';
-let parsed; 
-try{ parsed=parseTokens(cat, tokens); currentParsed=parsed; }catch(e){ parsed={}; currentParsed={}; }
-const labels={senderWallet:'SENDER WALLET', receiverWallet:'RECEIVER WALLET', wallet:'WALLET', ref:'REF', date:'DATE', time:'TIME', amount:'AMOUNT', dateTime:'DATE/TIME'};
-Object.keys(labels).forEach(k=>{
-if(parsed[k]===undefined) return;
-const chip=document.createElement('span'); 
-chip.className='chip'+(parsed[k]?'':' warn');
-chip.innerHTML=`<b>${labels[k]}</b> ${esc(parsed[k]||'—')}`; 
-previewEl.appendChild(chip);
-});
-updateAnalysis(parsed, tokens);
+  const raw = inputEl.value;
+  const tokens = tokenize(raw);
+  currentTokens = tokens;
+  inputCount.textContent = tokens.length+' field'+(tokens.length===1?'':'s');
+  previewEl.innerHTML='';
+
+  if(!tokens.length){
+    lastDetection = null;
+    parseStatus.textContent='\u00A0';
+    resetAnalysis();
+    renderDetectionBar();
+    updateModePill();
+    return;
+  }
+
+  const det = detectCategory(raw);
+  lastDetection = det;
+  if(det.key && !overrideLocked && det.key !== activeKey){
+    switchCategory(det.key, {inputValue: raw, fieldValues: captureFieldValues()});
+    return;
+  }
+  renderDetectionBar();
+  updateModePill();
+
+  const cat = CATS[activeKey];
+  const ok = tokens.length >= cat.minTokens;
+  parseStatus.textContent = tokens.length+' field'+(tokens.length===1?'':'s')+' · needs '+cat.minTokens+(ok?' ✅':'');
+  parseStatus.style.color = ok ? '' : 'var(--danger)';
+
+  let parsed;
+  try { parsed = parseTokens(cat, tokens); currentParsed = parsed; } catch(e){ parsed={}; currentParsed={}; }
+
+  const labels={senderWallet:'SENDER WALLET', receiverWallet:'RECEIVER WALLET', wallet:'WALLET', ref:'REF', date:'DATE', time:'TIME', amount:'AMOUNT', dateTime:'DATE/TIME'};
+  Object.keys(labels).forEach(function(k){
+    if(parsed[k]===undefined) return;
+    const chip=document.createElement('span');
+    chip.className='chip'+(parsed[k]?'':' warn');
+    chip.innerHTML='<b>'+labels[k]+'</b> '+esc(parsed[k]||'—');
+    previewEl.appendChild(chip);
+  });
+
+  updateAnalysis(parsed, tokens);
 }
 
-inputEl.addEventListener('input',()=>{ clearTimeout(previewTimer); previewTimer=setTimeout(renderPreview,120); });
-document.addEventListener('input', (e) => {
-if(e.target.closest('.dynamic-fields') || e.target.closest('.searchable-dropdown')){
-clearTimeout(previewTimer); previewTimer=setTimeout(triggerAnalysis, 80);
-}
+inputEl.addEventListener('input', function(){
+  if(!inputEl.value.trim()){ overrideLocked = false; }
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(renderPreview, 120);
 });
 
 // -------- COLLECT & VALIDATE --------
 function collectFields(){
-const cat=CATS[activeKey]; const vals={}; const errors=[];
-cat.fields.forEach(f=>{
-if(f.kind==='bank'){
-const v=bankDropdown?bankDropdown.getValue():'';
-vals[f.id]=v; 
-if(f.required&&!v) errors.push({fieldId:f.id+'_input', msg:`${f.label} is required`});
-} else if(f.kind==='digits'){
-const el=document.getElementById(f.id); const v=el?el.value.trim():'';
-vals[f.id]=v;
-if(v&&v.length!==f.length) errors.push({fieldId:f.id, msg:`${f.label} must be ${f.length} digits`});
-else if(f.startsWithZero && v && v[0] !== '0') errors.push({fieldId:f.id, msg:`${f.label} must start with 0`});
-else if(f.required&&!v) errors.push({fieldId:f.id, msg:`${f.label} is required`});
-} else {
-const el=document.getElementById(f.id); const v=el?el.value.trim():'';
-vals[f.id]=v; if(f.required&&!v) errors.push({fieldId:f.id, msg:`${f.label} is required`});
-}
-});
-return {vals, errors};
+  const cat=CATS[activeKey]; const vals={}; const errors=[];
+  cat.fields.forEach(function(f){
+    if(f.kind==='bank'){
+      const v = bankDropdown ? bankDropdown.getValue() : '';
+      vals[f.id]=v;
+      if(f.required && !v) errors.push({fieldId:f.id+'_input', msg:f.label+' is required'});
+    } else if(f.kind==='digits'){
+      const el=document.getElementById(f.id); const v=el?el.value.trim():'';
+      vals[f.id]=v;
+      if(v && v.length!==f.length) errors.push({fieldId:f.id, msg:f.label+' must be '+f.length+' digits'});
+      else if(f.startsWithZero && v && v[0]!=='0') errors.push({fieldId:f.id, msg:f.label+' must start with 0'});
+      else if(f.required && !v) errors.push({fieldId:f.id, msg:f.label+' is required'});
+    } else {
+      const el=document.getElementById(f.id); const v=el?el.value.trim():'';
+      vals[f.id]=v;
+      if(f.required && !v) errors.push({fieldId:f.id, msg:f.label+' is required'});
+    }
+  });
+  return {vals:vals, errors:errors};
 }
 function flagErrors(errors){
-errors.forEach(e=>{ const el=document.getElementById(e.fieldId); if(el){ el.classList.add('error','shake'); el.addEventListener('animationend',()=>el.classList.remove('shake'),{once:true}); } });
+  errors.forEach(function(e){
+    const el=document.getElementById(e.fieldId);
+    if(el){ el.classList.add('error','shake'); el.addEventListener('animationend', function(){ el.classList.remove('shake'); }, {once:true}); }
+  });
 }
 
-// -------- DUPLICATE REF (normalized comparison) --------
+// -------- DUPLICATE REF --------
 function checkDuplicateRef(ref){
-if(!ref) return false;
-const normalizedRef = normalizeRef(ref);
-const history=loadHistory();
-return history.some(entry => {
-if(!entry.ref) return false;
-const normalizedEntryRef = normalizeRef(entry.ref);
-return normalizedEntryRef === normalizedRef;
-});
+  if(!ref) return false;
+  const normalizedRef = normalizeRef(ref);
+  return loadHistory().some(function(entry){
+    if(!entry.ref) return false;
+    return normalizeRef(entry.ref) === normalizedRef;
+  });
 }
 
 // -------- GENERATE --------
 function generate(){
-const cat=CATS[activeKey];
-const {vals:fieldVals, errors:fieldErrors}=collectFields();
-const raw=inputEl.value.trim();
-const tokens=tokenize(raw);
-const allErrors=fieldErrors.map(e=>e.msg);
-if(!raw) allErrors.push('Paste transaction data first.');
-let parsed={};
-if(raw){ 
-try { parsed=parseTokens(cat, tokens); } catch(e){ parsed={}; }
-if(tokens.length<cat.minTokens) allErrors.push(`Need at least ${cat.minTokens} fields (got ${tokens.length}).`);
-if(cat.walletFromTokens){ const d=(parsed.wallet||'').replace(/\D/g,''); if(d.length!==11) allErrors.push(`Wallet number must be 11 digits (found ${d.length}).`); }
-if('amount' in parsed && isBlankAmount(parsed.amount)) allErrors.push('Amount not found.');
-if('amount' in parsed && parsed.amount && !isPlausibleAmount(parsed.amount)) allErrors.push('Amount appears invalid (zero, negative, or implausible).');
-}
-if(allErrors.length){ 
-errorBanner.innerHTML=`<strong>⛔ Fix before generating:</strong><ul>${allErrors.map(m=>`<li>${esc(m)}</li>`).join('')}</ul>`; 
-errorBanner.classList.add('show'); 
-flagErrors(fieldErrors); 
-showToast('Check errors'); 
-return null; 
-}
-errorBanner.classList.remove('show');
+  const cat=CATS[activeKey];
+  const collected=collectFields();
+  const fieldVals=collected.vals;
+  const fieldErrors=collected.errors;
+  const raw=inputEl.value.trim();
+  const tokens=tokenize(raw);
+  const allErrors=fieldErrors.map(function(e){ return e.msg; });
+  if(!raw) allErrors.push('Paste transaction data first.');
+  let parsed={};
+  if(raw){
+    parsed=parseTokens(cat, tokens);
+    if(tokens.length<cat.minTokens) allErrors.push('Need at least '+cat.minTokens+' fields (got '+tokens.length+').');
+    if(cat.walletFromTokens){ const d=(parsed.wallet||'').replace(/\D/g,''); if(d.length!==11) allErrors.push('Wallet number must be 11 digits (found '+d.length+').'); }
+    if('amount' in parsed && isBlankAmount(parsed.amount)) allErrors.push('Amount not found.');
+    if('amount' in parsed && parsed.amount && !isPlausibleAmount(parsed.amount)) allErrors.push('Amount appears invalid (zero, negative, or implausible).');
+  }
+  if(allErrors.length){
+    errorBanner.innerHTML='<strong>⛔ Fix before generating:</strong><ul>'+allErrors.map(function(m){ return '<li>'+esc(m)+'</li>'; }).join('')+'</ul>';
+    errorBanner.classList.add('show');
+    flagErrors(fieldErrors);
+    showToast('Check errors');
+    return null;
+  }
+  errorBanner.classList.remove('show');
 
-const warns=[]; 
-if(parsed.date && parsed.date.trim() && !looksLikeDate(parsed.date)) warns.push(`Date format: "${parsed.date}"`);
-if(parsed.time && parsed.time.trim() && !looksLikeTime(parsed.time)) warns.push(`Time format: "${parsed.time}"`);
-if(activeKey==='wallet_recycling'){
-if(parsed.dateTime && !looksLikeDate(parsed.dateTime) && !looksLikeTime(parsed.dateTime)) warns.push(`Date/Time format: "${parsed.dateTime}"`);
-if(parsed.amount && isBlankAmount(parsed.amount)) warns.push('Amount appears blank');
-}
-if(warns.length){ 
-warnBanner.innerHTML=`<strong>⚠️ Format check:</strong><ul>${warns.map(m=>`<li>${esc(m)}</li>`).join('')}</ul>`; 
-warnBanner.classList.add('show'); 
-} else { 
-warnBanner.classList.remove('show'); 
-}
+  const warns=[];
+  if(parsed.date && parsed.date.trim() && !looksLikeDate(parsed.date)) warns.push('Date format: "'+parsed.date+'"');
+  if(parsed.time && parsed.time.trim() && !looksLikeTime(parsed.time)) warns.push('Time format: "'+parsed.time+'"');
+  if(activeKey==='wallet_recycling'){
+    if(parsed.dateTime && !looksLikeDate(parsed.dateTime) && !looksLikeTime(parsed.dateTime)) warns.push('Date/Time format: "'+parsed.dateTime+'"');
+    if(parsed.amount && isBlankAmount(parsed.amount)) warns.push('Amount appears blank');
+  }
+  const ref = parsed.ref || '';
+  const isDup = ref && checkDuplicateRef(ref);
+  if(isDup){
+    warnBanner.innerHTML='<strong>⚠ Duplicate reference:</strong> "'+esc(ref)+'" was already processed.';
+    warnBanner.classList.add('show');
+  } else if(warns.length){
+    warnBanner.innerHTML='<strong>⚠ Format check:</strong><ul>'+warns.map(function(m){ return '<li>'+esc(m)+'</li>'; }).join('')+'</ul>';
+    warnBanner.classList.add('show');
+  } else {
+    warnBanner.classList.remove('show');
+  }
 
-const ref = parsed.ref || '';
-if(ref && checkDuplicateRef(ref)){
-warnBanner.innerHTML=`<strong>⚠️ Duplicate reference detected:</strong> Reference "${esc(ref)}" was already processed.`;
-warnBanner.classList.add('show');
-} else {
-if(warns.length===0) warnBanner.classList.remove('show');
-}
-
-return cat.build(parsed, fieldVals);
+  return cat.build(parsed, fieldVals);
 }
 
 // -------- OUTPUT --------
 function renderSingle(text, parsed, fieldVals){
-outputEl.value=text; lastOutputText=text; copyOnlyBtn.disabled=false;
-const cat = CATS[activeKey];
-const ref = parsed.ref || '';
-const sensitiveData = {};
-if(cat.sensitiveFields){
-cat.sensitiveFields.forEach(fieldId => {
-  const val = parsed[fieldId] || fieldVals[fieldId] || '';
-  if(val) sensitiveData[fieldId] = val;
-});
+  outputEl.value=text;
+  lastOutputText=text;
+  outputStatus.textContent='Generated';
+  copyOnlyBtn.disabled=false;
+  const cat = CATS[activeKey];
+  const ref = parsed.ref || '';
+  const sensitiveData={};
+  if(cat.sensitiveFields){
+    cat.sensitiveFields.forEach(function(fieldId){
+      const val = parsed[fieldId] || fieldVals[fieldId] || '';
+      if(val) sensitiveData[fieldId]=val;
+    });
+  }
+  pushHistory(cat.label, text, ref, sensitiveData);
 }
-pushHistory(CATS[activeKey].label, text, ref, sensitiveData);
+
+// -------- PERSISTENT CONFIRMATION --------
+function showConfirmation(text, parsed, cat){
+  lastGenerated = {text:text, ref:(parsed.ref||''), label:cat.label, ts:Date.now()};
+  const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+  confirmTitle.textContent = 'Ticket generated and copied';
+  confirmSub.textContent = cat.label
+    + (lastGenerated.ref ? ' · Ref ' + lastGenerated.ref : '')
+    + ' · ' + time
+    + (queue.length ? ' · '+queue.length+' still queued' : '');
+  confirmBar.hidden = false;
+  confirmBar.classList.add('show');
+}
+confirmCopyBtn.addEventListener('click', function(){
+  if(!lastGenerated || !lastGenerated.text){ showToast('Nothing to copy'); return; }
+  navigator.clipboard.writeText(lastGenerated.text).then(function(){ showToast('Copied again'); }).catch(function(){ showToast('Copy failed'); });
+});
+confirmClose.addEventListener('click', function(){ confirmBar.hidden = true; });
+
+// -------- AUTO-RESET AFTER GENERATE --------
+function resetInputOnly(){
+  inputEl.value='';
+  previewEl.innerHTML='';
+  parseStatus.textContent='\u00A0';
+  inputCount.textContent='0 fields';
+  clearAllFields();
+  currentParsed={}; currentTokens=[];
+  lastDetection=null;
+  overrideLocked=false;
+  outputEl.value='';
+  lastOutputText='';
+  outputStatus.textContent='Nothing generated yet';
+  copyOnlyBtn.disabled=true;
+  errorBanner.classList.remove('show');
+  warnBanner.classList.remove('show');
+  resetAnalysis();
+  renderDetectionBar();
+  updateModePill();
 }
 
 function generateAndCopy(){
-const result=generate();
-if(!result) return;
-const cat=CATS[activeKey];
-const {vals:fieldVals}=collectFields();
-const parsed=parseTokens(cat, tokenize(inputEl.value));
-renderSingle(result, parsed, fieldVals);
-navigator.clipboard.writeText(result).then(()=>showToast('Copied')).catch(()=>showToast('Output ready'));
-}
-function copyOnly(){ if(!lastOutputText){ showToast('Nothing to copy'); return; } navigator.clipboard.writeText(lastOutputText).then(()=>showToast('Output copied')).catch(()=>showToast('Copy failed')); }
+  const result=generate();
+  if(!result) return;
+  const cat=CATS[activeKey];
+  const collected=collectFields();
+  const parsed=parseTokens(cat, tokenize(inputEl.value));
+  renderSingle(result, parsed, collected.vals);
+  navigator.clipboard.writeText(result).then(function(){ showToast('Copied'); }).catch(function(){ showToast('Output ready'); });
+  showConfirmation(result, parsed, cat);
 
-// -------- CLEAR WITH UNDO --------
-function clearAll(){
-const state = {
-  input: inputEl.value,
-  output: outputEl.value,
-  lastOutput: lastOutputText,
-  parsed: currentParsed,
-  tokens: currentTokens,
-  fields: {}
-};
-const cat=CATS[activeKey];
-cat.fields.forEach(f=>{
-  if(f.kind==='bank' && bankDropdown){
-    state.fields[f.id] = bankDropdown.getValue();
-  } else if(f.kind==='digits' || f.kind==='text'){
-    const el=document.getElementById(f.id);
-    if(el) state.fields[f.id] = el.value;
+  // Only auto-advance when the just-generated transaction actually came from
+  // the queue. A direct one-off paste leaves staged items untouched.
+  const cameFromQueue = !!queueActiveId;
+  if(cameFromQueue){
+    removeQueueItem(queueActiveId);
+    queueActiveId = null;
+    if(queue.length){
+      loadQueueItem(queue[0].id);
+    } else {
+      resetInputOnly();
+    }
+  } else {
+    resetInputOnly();
   }
+  renderQueue();
+}
+function copyOnly(){
+  if(!lastOutputText){ showToast('Nothing to copy'); return; }
+  navigator.clipboard.writeText(lastOutputText).then(function(){ showToast('Output copied'); }).catch(function(){ showToast('Copy failed'); });
+}
+
+// -------- DELIBERATE DISCARD, WITH A REAL CONFIRM --------
+function openDiscardConfirm(){
+  const hasSomething = inputEl.value.trim() !== '' || lastOutputText !== '';
+  if(!hasSomething){ showToast('Nothing to discard'); return; }
+  discardConfirm.classList.add('show');
+}
+function closeDiscardConfirm(){ discardConfirm.classList.remove('show'); }
+function discardEntry(){
+  closeDiscardConfirm();
+  if(queueActiveId){ removeQueueItem(queueActiveId); queueActiveId=null; }
+  resetInputOnly();
+  renderQueue();
+  showToast('Entry discarded');
+}
+discardBtn.addEventListener('click', openDiscardConfirm);
+discardNo.addEventListener('click', closeDiscardConfirm);
+discardYes.addEventListener('click', discardEntry);
+
+// -------- QUEUE --------
+function stageCurrent(){
+  const raw = inputEl.value.trim();
+  if(!raw){ showToast('Nothing to stage'); return; }
+  const det = detectCategory(raw);
+  const key = (det && det.key) ? det.key : activeKey;
+  queue.push({id:'q'+Date.now()+Math.random().toString(36).slice(2,6), raw:raw, key:key, added:Date.now()});
+  saveQueue(queue);
+  renderQueue();
+  showToast('Staged for later');
+  resetInputOnly();
+}
+stageBtn.addEventListener('click', stageCurrent);
+
+function removeQueueItem(id){
+  queue = queue.filter(function(q){ return q.id!==id; });
+  saveQueue(queue);
+}
+
+function loadQueueItem(id){
+  const item = queue.filter(function(q){ return q.id===id; })[0];
+  if(!item) return;
+  queueActiveId = id;
+  overrideLocked = false;
+  inputEl.value = item.raw;
+  clearAllFields();
+  renderPreview();
+  if(!lastDetection || !lastDetection.key){
+    switchCategory(item.key, {inputValue: item.raw, fieldValues:{}});
+  }
+  renderQueue();
+  inputEl.focus();
+  showToast('Loaded from queue');
+}
+
+function renderQueue(){
+  queueCount.textContent = queue.length ? '('+queue.length+')' : '';
+  queueList.innerHTML='';
+  if(!queue.length){
+    queueList.innerHTML='<div class="queue-empty">No staged transactions. Paste a row and press <strong>＋ Stage</strong> to build a back-to-back queue.</div>';
+    return;
+  }
+  queue.forEach(function(item, idx){
+    const row=document.createElement('div');
+    row.className='queue-item'+(item.id===queueActiveId?' active':'');
+    const preview = item.raw.replace(/[\r\n\t]+/g,' · ').slice(0,90);
+    row.innerHTML = '<span class="queue-index" aria-hidden="true">'+(idx+1)+'</span>'
+      + '<div class="queue-meta">'
+      +   '<span class="queue-cat">'+esc(CATS[item.key] ? CATS[item.key].label : 'Unknown type')+'</span>'
+      +   '<span class="queue-preview">'+esc(preview)+'</span>'
+      + '</div>';
+    const loadBtn=document.createElement('button');
+    loadBtn.type='button'; loadBtn.className='mini-btn'; loadBtn.textContent = (item.id===queueActiveId ? 'Reload' : 'Load');
+    loadBtn.addEventListener('click', function(){ loadQueueItem(item.id); });
+    const rmBtn=document.createElement('button');
+    rmBtn.type='button'; rmBtn.className='icon-btn'; rmBtn.textContent='×';
+    rmBtn.setAttribute('aria-label','Remove item '+(idx+1)+' from queue');
+    rmBtn.addEventListener('click', function(){
+      removeQueueItem(item.id);
+      if(queueActiveId===item.id){ queueActiveId=null; resetInputOnly(); }
+      renderQueue();
+    });
+    row.append(loadBtn, rmBtn);
+    queueList.appendChild(row);
+  });
+}
+queueClear.addEventListener('click', function(){
+  if(!queue.length){ showToast('Queue is already empty'); return; }
+  queue=[]; queueActiveId=null; saveQueue(queue); renderQueue();
+  showToast('Queue cleared');
 });
-renderCategory();
-showToast('Cleared');
-showUndo('Restore cleared fields', ()=>{
-  inputEl.value = state.input || '';
-  if(state.output) outputEl.value = state.output;
-  lastOutputText = state.lastOutput || '';
-  if(state.parsed) currentParsed = state.parsed;
-  if(state.tokens) currentTokens = state.tokens;
-  const cat2=CATS[activeKey];
-  cat2.fields.forEach(f=>{
-    if(f.kind==='bank' && bankDropdown && state.fields[f.id] !== undefined){
-      bankDropdown.input.value = state.fields[f.id] || '';
-      bankDropdown.hidden.value = state.fields[f.id] || '';
-    } else if((f.kind==='digits'||f.kind==='text') && state.fields[f.id] !== undefined){
-      const el=document.getElementById(f.id);
-      if(el) el.value = state.fields[f.id] || '';
+
+// -------- HISTORY --------
+function pushHistory(label, text, ref, sensitiveData){
+  const h=loadHistory();
+  h.unshift({ts:Date.now(), category:label, text:text, ref:ref, sensitiveData:sensitiveData});
+  saveHistory(h);
+  renderHistory();
+}
+function relativeTime(ts){
+  const d=Math.max(0,Date.now()-ts); const m=Math.floor(d/60000);
+  if(m<1) return 'just now';
+  if(m<60) return m+'m ago';
+  const h=Math.floor(m/60);
+  if(h<24) return h+'h ago';
+  return Math.floor(h/24)+'d ago';
+}
+function renderHistory(){
+  const h=loadHistory();
+  historyCount.textContent = h.length ? '('+h.length+')' : '';
+  historyList.innerHTML='';
+  if(!h.length){ historyList.innerHTML='<div class="history-empty">Generated tickets appear here.</div>'; return; }
+  h.forEach(function(entry){
+    const row=document.createElement('div'); row.className='history-item';
+    const meta=document.createElement('div'); meta.className='meta';
+    let preview = entry.text.replace(/\n/g,' · ');
+    if(entry.sensitiveData){
+      Object.keys(entry.sensitiveData).forEach(function(key){
+        const val=entry.sensitiveData[key];
+        if(val){ preview = preview.split(val).join(maskSensitive(val)); }
+      });
+    }
+    meta.innerHTML='<span class="cat">'+esc(entry.category)+'</span><span class="time">'+relativeTime(entry.ts)+'</span><span class="preview-text">'+esc(preview)+'</span>';
+    const btn=document.createElement('button'); btn.type='button'; btn.textContent='Copy';
+    if(!entry.text) btn.disabled=true;
+    btn.addEventListener('click', function(){
+      navigator.clipboard.writeText(entry.text).then(function(){ showToast('Copied from history'); }).catch(function(){ showToast('Copy failed'); });
+    });
+    row.append(meta,btn); historyList.appendChild(row);
+  });
+}
+historyHeader.addEventListener('click', function(e){
+  if(e.target===historyClearBtn || historyConfirm.contains(e.target)) return;
+  historySection.classList.toggle('collapsed');
+});
+historyClearBtn.addEventListener('click', function(e){
+  e.stopPropagation();
+  if(!loadHistory().length){ showToast('No history to clear'); return; }
+  historyConfirm.classList.add('show');
+});
+historyNo.addEventListener('click', function(){ historyConfirm.classList.remove('show'); });
+historyYes.addEventListener('click', function(){
+  historyConfirm.classList.remove('show');
+  saveHistory([]);
+  renderHistory();
+  showToast('History cleared');
+});
+
+// ============================================================
+// Shared document-level handlers (used on both the opener doc
+// and the PiP doc, so shortcuts / outside-click / dropdown close
+// keep working no matter which document owns #app right now).
+// ============================================================
+function handleDocClick(e){
+  const targetDoc = (e.target && e.target.ownerDocument) || document;
+  targetDoc.querySelectorAll('.searchable-dropdown').forEach(function(wrap){
+    if(!wrap.contains(e.target)){
+      const list = wrap.querySelector('.dropdown-list');
+      if(list) list.classList.remove('show');
     }
   });
-  if(state.input) renderPreview();
-  else resetAnalysis();
-  showToast('Restored');
-});
+  closeAllTooltips();
 }
-
-function showUndo(msg, restoreFn){
-undoMsg.textContent=msg;
-undoBar.classList.add('show');
-undoBtn.onclick=()=>{ restoreFn(); undoBar.classList.remove('show'); };
-setTimeout(()=>{ undoBar.classList.remove('show'); }, 5000);
-}
-
-// -------- HISTORY (structured with generic sensitive field masking) --------
-function pushHistory(label,text,ref,sensitiveData){
-const h=loadHistory();
-h.unshift({ts:Date.now(), category:label, text, ref, sensitiveData});
-saveHistory(h);
-renderHistory();
-}
-function relativeTime(ts){ const d=Math.max(0,Date.now()-ts); const m=Math.floor(d/60000); if(m<1)return'just now'; if(m<60)return m+'m ago'; const h=Math.floor(m/60); if(h<24)return h+'h ago'; return Math.floor(h/24)+'d ago'; }
-function renderHistory(){
-const h=loadHistory();
-historyCount.textContent=h.length?`(${h.length})`:'';
-historyList.innerHTML='';
-if(!h.length){ historyList.innerHTML='<div class="history-empty">Generated tickets appear here.</div>'; return; }
-h.forEach(entry=>{
-const row=document.createElement('div'); row.className='history-item';
-const meta=document.createElement('div'); meta.className='meta';
-let preview = entry.text.replace(/\n/g,' · ');
-if(entry.sensitiveData){
-Object.keys(entry.sensitiveData).forEach(key => {
-  const val = entry.sensitiveData[key];
-  if(val) {
-    preview = preview.replace(new RegExp(val, 'g'), maskSensitive(val));
+function handleDocInput(e){
+  if(e.target.closest && (e.target.closest('.dynamic-fields') || e.target.closest('.searchable-dropdown'))){
+    clearTimeout(previewTimer);
+    previewTimer = setTimeout(triggerAnalysis, 80);
   }
-});
 }
-meta.innerHTML=`<span class="cat">${esc(entry.category)}</span><span class="time">${relativeTime(entry.ts)}</span><span class="preview-text">${esc(preview)}</span>`;
-const btn=document.createElement('button'); btn.type='button'; btn.textContent='Copy';
-if(!entry.text){ btn.disabled=true; }
-btn.addEventListener('click',()=>{ navigator.clipboard.writeText(entry.text).then(()=>showToast('Copied from history')).catch(()=>showToast('Copy failed')); });
-row.append(meta,btn); historyList.appendChild(row);
-});
+function handleDocKeydown(e){
+  if((e.ctrlKey||e.metaKey) && e.key==='Enter'){ e.preventDefault(); generateAndCopy(); return; }
+  if(e.key==='Escape'){
+    closeAllTooltips();
+    closeDiscardConfirm();
+    historyConfirm.classList.remove('show');
+    document.querySelectorAll('.searchable-dropdown .dropdown-list.show').forEach(function(l){ l.classList.remove('show'); });
+  }
+}
+function attachDocListeners(doc){
+  doc.addEventListener('click', handleDocClick);
+  doc.addEventListener('input', handleDocInput);
+  doc.addEventListener('keydown', handleDocKeydown);
+}
+attachDocListeners(openerDocument);
+
+// ============================================================
+// POINT 8: Document Picture-in-Picture
+// ============================================================
+const pipSupported = ('documentPictureInPicture' in window);
+
+if(!pipSupported){
+  pipBtn.classList.add('pip-unsupported');
+  pipBtn.setAttribute('aria-disabled', 'true');
+  pipBtn.title = 'Picture-in-Picture requires Chrome or Edge';
+  pipBtn.setAttribute('aria-label','Picture-in-Picture requires Chrome or Edge');
 }
 
-historyHeader.addEventListener('click',e=>{ if(e.target===historyClearBtn)return; historySection.classList.toggle('collapsed'); });
-historyClearBtn.addEventListener('click',e=>{
-e.stopPropagation();
-const old=loadHistory();
-if(!old.length){ showToast('No history to clear'); return; }
-saveHistory([]);
-renderHistory();
-showUndo('History cleared', ()=>{ saveHistory(old); renderHistory(); showToast('Restored'); });
-});
+function ensurePipPlaceholder(){
+  if(pipPlaceholder) return pipPlaceholder;
+  pipPlaceholder = openerDocument.createElement('div');
+  pipPlaceholder.className = 'pip-placeholder';
+  pipPlaceholder.hidden = true;
+  pipPlaceholder.innerHTML =
+    '<div class="pip-placeholder-inner">'
+    + '<div class="pip-placeholder-glyph" aria-hidden="true">⧉</div>'
+    + '<div class="pip-placeholder-title">TxForm is floating</div>'
+    + '<div class="pip-placeholder-sub">The tool is open in a Picture-in-Picture window, above all your tabs. Use it there, or bring it back below.</div>'
+    + '<button type="button" class="primary-btn" data-pip-return>Bring back to this tab</button>'
+    + '</div>';
+  // Insert as a sibling of #app so we can slot #app back into place later.
+  appNode.parentNode.insertBefore(pipPlaceholder, appNode.nextSibling);
+  pipPlaceholder.querySelector('[data-pip-return]').addEventListener('click', function(){
+    if(pipWindow) closePip();
+  });
+  return pipPlaceholder;
+}
 
-// -------- KEYBOARD --------
-document.addEventListener('keydown',e=>{
-if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){ e.preventDefault(); generateAndCopy(); }
-else if(e.key==='Escape'){
-const active=document.activeElement;
-if(active===inputEl || (active && active.closest('.input-panel'))){
-if(inputEl.value.trim()===''){ clearAll(); }
-else { showToast('Clear input first or use the Clear button'); }
+async function openPip(){
+  if(pipWindow){ try{ pipWindow.focus(); }catch(e){} return; }
+  if(!pipSupported){
+    showToast('Picture-in-Picture requires Chrome or Edge');
+    return;
+  }
+
+  let win;
+  try {
+    win = await window.documentPictureInPicture.requestWindow({ width: 460, height: 740 });
+  } catch(err){
+    showToast('Could not open the floating window');
+    return;
+  }
+  pipWindow = win;
+
+  // ---- Copy the opener's styles into the PiP document <head> ----
+  openerDocument.querySelectorAll('style').forEach(function(styleEl){
+    win.document.head.appendChild(styleEl.cloneNode(true));
+  });
+  openerDocument.querySelectorAll('link[rel="stylesheet"]').forEach(function(linkEl){
+    win.document.head.appendChild(linkEl.cloneNode(true));
+  });
+  // Preserve the dark-mode class on <html>, and give the PiP window a title.
+  win.document.documentElement.className = openerDocument.documentElement.className;
+  win.document.title = openerDocument.title || 'TxForm';
+
+  // ---- Show the placeholder in the main tab, then MOVE #app (not clone) ----
+  ensurePipPlaceholder().hidden = false;
+  win.document.body.appendChild(appNode);
+
+  // Switch the shared document binding so all lookups target the PiP doc.
+  document = win.document;
+
+  // Attach the shared document-level handlers to the PiP doc too. The opener
+  // keeps its copies so the placeholder stays interactive.
+  attachDocListeners(win.document);
+
+  // ---- Header button becomes a "return to tab" affordance ----
+  pipBtn.classList.add('pip-active');
+  pipBtn.textContent = '⤢';
+  pipBtn.title = 'Return TxForm to this tab';
+  pipBtn.setAttribute('aria-label','Return TxForm to this tab');
+  pipBtn.removeAttribute('aria-disabled');
+
+  // Re-sync layout-sensitive bits with the PiP width.
+  win.addEventListener('resize', checkTabOverflow);
+  requestAnimationFrame(checkTabOverflow);
+
+  // Focus the input so the operator can keep typing without a click.
+  try{ inputEl.focus(); }catch(e){}
+
+  // ---- Handle closure (browser's own close button, ESC, programmatic) ----
+  win.addEventListener('pagehide', handlePipClosed, { once: true });
+
+  showToast('TxForm is floating');
 }
+
+function closePip(){
+  if(!pipWindow) return;
+  const win = pipWindow;
+  try{ win.close(); }catch(e){}
+  // Safety net: if pagehide doesn't fire for some reason, force the restore.
+  setTimeout(function(){ if(pipWindow === win) handlePipClosed(); }, 250);
 }
+
+function handlePipClosed(){
+  if(!pipWindow) return;
+  const win = pipWindow;
+  pipWindow = null;
+
+  // Restore the shared document binding first so any state updates use the opener.
+  document = openerDocument;
+
+  // Move #app back into .app-shell, exactly where the placeholder is.
+  if(appNode && pipPlaceholder && pipPlaceholder.parentNode){
+    pipPlaceholder.parentNode.insertBefore(appNode, pipPlaceholder);
+    pipPlaceholder.hidden = true;
+  }
+
+  // Restore the header button.
+  pipBtn.classList.remove('pip-active');
+  pipBtn.textContent = '⧉';
+  if(pipSupported){
+    pipBtn.title = 'Float TxForm in a Picture-in-Picture window';
+    pipBtn.setAttribute('aria-label','Float TxForm in a Picture-in-Picture window');
+    pipBtn.removeAttribute('aria-disabled');
+  }
+
+  // Re-sync the tabs overflow indicator now that layout is back in this tab.
+  checkTabOverflow();
+
+  // Focus the input so the operator can resume immediately.
+  try{ inputEl.focus(); }catch(e){}
+
+  showToast('Returned to this tab');
+}
+
+pipBtn.addEventListener('click', function(){
+  if(pipWindow){ closePip(); }
+  else { openPip(); }
 });
 
 // -------- WIRE --------
 generateBtn.addEventListener('click', generateAndCopy);
 copyOnlyBtn.addEventListener('click', copyOnly);
-clearBtn.addEventListener('click', clearAll);
-renderTabs(); renderCategory(); renderHistory(); historySection.classList.add('collapsed');
+renderTabs();
+renderCategory({inputValue:''});
+renderQueue();
+renderHistory();
+historySection.classList.add('collapsed');
 setTimeout(triggerAnalysis, 100);
 
 // -------- CONSOLE TEST FIXTURES --------
 window.__txfTests = {
-  atm: { 
-    raw: "ATM Cash Out\tMeeza\t01017717771\t#600000016590\t04. March. 2026\n12:25 AM\t8000\t- 8000\t0\t0\tPosted\t-", 
-    expected: { wallet:"01017717771", ref:"#600000016590", date:"04. March. 2026", time:"12:25 AM", amount:"8000" } 
+  atm: {
+    raw: "ATM Cash Out\tMeeza\t01017717771\t#600000016590\t04. March. 2026\n12:25 AM\t8000\t- 8000\t0\t0\tPosted\t-",
+    expected: { wallet:"01017717771", ref:"#600000016590", date:"04. March. 2026", time:"12:25 AM", amount:"8000" },
+    detect: 'atm'
   },
-  fawry_onhold: { 
-    raw: "Receive CashOut from Fawry\tFawry\t000000005\t#113000020\t02. September. 2026\n07:50 PM\t7680.48\t- 6500\t65\t7680.48\tRejected\t6500 EGP", 
-    expected: { ref:"#113000020", date:"02. September. 2026", time:"07:50 PM", amount:"6500" } 
+  fawry_onhold: {
+    raw: "Receive CashOut from Fawry\tFawry\t000000005\t#113000020\t02. September. 2026\n07:50 PM\t7680.48\t- 6500\t65\t7680.48\tRejected\t6500 EGP",
+    expected: { ref:"#113000020", date:"02. September. 2026", time:"07:50 PM", amount:"6500" },
+    detect: 'fawry_onhold'
   },
   fawry_posted: {
     raw: "Receive CashOut from Fawry\tFawry\t282100005\t#113000044\t02. September. 2026\n11:37 PM\t443.13\t- 400\t4\t43.13\tPosted\t-",
-    expected: { ref:"#113000044", date:"02. September. 2026", time:"11:37 PM", amount:"400" }
+    expected: { ref:"#113000044", date:"02. September. 2026", time:"11:37 PM", amount:"400" },
+    detect: 'fawry_posted'
   },
   agent_cashout_onhold: {
     raw: "Receive Agent Cash Out\tMeeza\t158011428\t#ac72c642-1111-4ec3-1111-373066066a25\t29. August. 2026\n06:21 PM\t863.6\t- 860\t0\t\tFailed\t860 EGP",
-    expected: { ref:"#ac72c642-1111-4ec3-1111-373066066a25", date:"29. August. 2026", time:"06:21 PM", amount:"860" }
+    expected: { ref:"#ac72c642-1111-4ec3-1111-373066066a25", date:"29. August. 2026", time:"06:21 PM", amount:"860" },
+    detect: 'agent_cashout_onhold'
   },
   agent_cashout_posted: {
     raw: "Receive Agent Cash Out\tMeeza\t183002362\t#022859411115\t19. August. 2026\n10:53 PM\t732.1\t- 500\t5\t227.1\tPosted\t-",
-    expected: { ref:"022859411115", date:"19. August. 2026", time:"10:53 PM", amount:"500" }
+    expected: { ref:"022859411115", date:"19. August. 2026", time:"10:53 PM", amount:"500" },
+    detect: 'agent_cashout_posted'
   },
-  p2m: { 
-    raw: "Send P2M\tMobile\t162000076\t#110000513\t30. August. 2026\n07:30 PM\t3507.43\t- 3500\t0\t7.43\tPosted\t-", 
-    expected: { ref:"#110000513", date:"30. August. 2026", time:"07:30 PM", amount:"3500" } 
+  p2m: {
+    raw: "Send P2M\tMobile\t162000076\t#110000513\t30. August. 2026\n07:30 PM\t3507.43\t- 3500\t0\t7.43\tPosted\t-",
+    expected: { ref:"#110000513", date:"30. August. 2026", time:"07:30 PM", amount:"3500" },
+    detect: 'p2m'
   },
   send_p2p_offus: {
     raw: "Send P2P\tMobile\t01099000050\t#113000031\t02. September. 2026\n08:36 PM\t1105.29\t- 1100\t0\t5.29\tPosted\t-",
-    expected: { receiverWallet:"01099000050", ref:"#113000031", date:"02. September. 2026", time:"08:36 PM", amount:"1100" }
+    expected: { receiverWallet:"01099000050", ref:"#113000031", date:"02. September. 2026", time:"08:36 PM", amount:"1100" },
+    detect: 'send_p2p_offus'
   },
   run: function(){
-    console.log('Running self-tests...');
+    console.log('Running self-tests…');
     let pass=true;
-    CAT_ORDER.forEach(k=>{
+    CAT_ORDER.forEach(function(k){
       if(k === 'wallet_recycling'){
-        console.warn(`⚠️ Skipping ${k} — no verified real sample available.`);
+        console.warn('⚠ Skipping '+k+' — no verified real sample available.');
         return;
       }
       const test=this[k];
-      if(!test){ console.warn(`⚠️ No test fixture for ${k}`); return; }
+      if(!test){ console.warn('⚠ No test fixture for '+k); return; }
       const tokens=tokenize(test.raw);
       const parsed=parseTokens(CATS[k], tokens);
       let ok=true;
-      Object.keys(test.expected).forEach(key=>{
-        if(parsed[key]!==test.expected[key]){ ok=false; console.warn(`[${k}] ${key}: expected "${test.expected[key]}", got "${parsed[key]}"`); }
+      Object.keys(test.expected).forEach(function(key){
+        if(parsed[key]!==test.expected[key]){ ok=false; console.warn('['+k+'] '+key+': expected "'+test.expected[key]+'", got "'+parsed[key]+'"'); }
       });
-      if(ok) console.log(`✅ ${k} passed`);
-      else { pass=false; console.error(`❌ ${k} failed`); }
-    });
+      const det = detectCategory(test.raw);
+      if(test.detect && det.key !== test.detect){
+        ok=false;
+        console.warn('['+k+'] detection: expected "'+test.detect+'", got "'+det.key+'" ('+det.confidence+')');
+      }
+      if(ok) console.log('✅ '+k+' passed');
+      else { pass=false; console.error('❌ '+k+' failed'); }
+    }, this);
     if(pass) console.log('✅ All available self-tests passed.');
-    else console.warn('⚠️ Some self-tests failed.');
+    else console.warn('⚠ Some self-tests failed.');
   }
 };
 })();
