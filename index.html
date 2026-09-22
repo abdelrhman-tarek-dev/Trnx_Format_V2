@@ -15,16 +15,17 @@
       --text-primary:#0a1a1f; --text-secondary:#2a424a; --text-muted:#667b83;
       --border-light:#d0dfe4; --accent:#0abf9f; --accent-dark:#047a65; --accent-soft:#ddf5ef;
       --success:#0b9f79; --success-soft:#e3f5ef;
-      --warning:#b7791f; --warning-soft:#fff8e6;
+      /* Unified attention color — errors, warnings, caution states all resolve here. */
       --danger:#ef4444; --danger-soft:#fee2e2; --danger-ink:#991b1b;
+      --warning:#ef4444; --warning-soft:#fee2e2;
       --shadow-sm:0 2px 8px rgba(10,30,36,.04); --shadow-md:0 8px 24px rgba(10,30,36,.08); --shadow-lg:0 20px 48px rgba(10,30,36,.12);
     }
     .dark{ --bg-page:#0b1419; --bg-card:#15242b; --surface:#1a2d35; --surface-2:#1f333c;
       --text-primary:#eaf3f5; --text-secondary:#b8ccd2; --text-muted:#799097;
       --border-light:#2b4450; --accent:#09b596; --accent-dark:#04997d; --accent-soft:#133d35;
       --success:#1db892; --success-soft:#10362e;
-      --warning:#d4a149; --warning-soft:#33290f;
-      --danger:#f87171; --danger-soft:#3a1a1a; --danger-ink:#fca5a5;
+      --danger:#ef4444; --danger-soft:#3a1a1a; --danger-ink:#fca5a5;
+      --warning:#ef4444; --warning-soft:#3a1a1a;
       --shadow-sm:0 2px 8px rgba(0,0,0,.3); --shadow-md:0 8px 24px rgba(0,0,0,.4); --shadow-lg:0 20px 48px rgba(0,0,0,.5);
     }
     html{scroll-behavior:smooth}
@@ -66,7 +67,12 @@
     .pip-placeholder-title{font-size:16px;font-weight:700;color:var(--text-primary)}
     .pip-placeholder-sub{font-size:12px;color:var(--text-muted);line-height:1.6}
 
-    .card-body{padding:22px 28px 28px}
+    /* Base flow uses a flex column so the .sidebar wrapper can remain a passthrough
+       (display:contents) at narrow widths while still being re-orderable. */
+    .card-body{padding:22px 28px 28px;display:flex;flex-direction:column}
+    .sidebar{display:contents}
+    #historySection{order:99}
+
     .workspace-top{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:16px}
     .eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark)}
     .workspace-title{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:2px;color:var(--text-primary)}
@@ -76,11 +82,13 @@
     /* Detection bar */
     .detect-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:18px;border:1px solid var(--border-light);background:var(--surface);margin-bottom:14px;transition:border-color .25s,background .25s,box-shadow .25s}
     .detect-bar[data-confidence="high"]{border-color:var(--success);background:var(--success-soft);box-shadow:var(--shadow-sm)}
-    .detect-bar[data-confidence="medium"]{border-color:var(--warning);background:var(--warning-soft)}
+    .detect-bar[data-confidence="medium"]{border-color:var(--danger);background:var(--danger-soft)}
+    .detect-bar[data-confidence="low"]{border-color:var(--danger);background:var(--danger-soft)}
     .detect-bar[data-confidence="manual"]{border-color:var(--accent);background:var(--accent-soft)}
     .detect-glyph{width:28px;height:28px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0;background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border-light)}
     .detect-bar[data-confidence="high"] .detect-glyph{background:var(--success);border-color:var(--success);color:#fff}
-    .detect-bar[data-confidence="medium"] .detect-glyph{background:var(--warning);border-color:var(--warning);color:#fff}
+    .detect-bar[data-confidence="medium"] .detect-glyph{background:var(--danger);border-color:var(--danger);color:#fff}
+    .detect-bar[data-confidence="low"] .detect-glyph{background:var(--danger);border-color:var(--danger);color:#fff}
     .detect-bar[data-confidence="manual"] .detect-glyph{background:var(--accent);border-color:var(--accent);color:#fff}
     .detect-copy{flex:1;min-width:0}
     .detect-title{font-size:13px;font-weight:600;color:var(--text-primary)}
@@ -142,19 +150,19 @@
     .analysis-panel{min-height:100%}
     .analysis-status{margin:4px 18px 10px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;gap:14px;transition:border-color .3s,background .3s,box-shadow .3s;box-shadow:var(--shadow-sm)}
     .analysis-status[data-state=ready]{border-color:var(--success);background:var(--success-soft);box-shadow:var(--shadow-md)}
-    .analysis-status[data-state=review]{border-color:var(--warning);background:var(--warning-soft);box-shadow:var(--shadow-md)}
+    .analysis-status[data-state=review]{border-color:var(--danger);background:var(--danger-soft);box-shadow:var(--shadow-md)}
     .analysis-status[data-state=critical]{border-color:var(--danger);background:var(--danger-soft);box-shadow:var(--shadow-md)}
     .status-left{display:flex;align-items:center;gap:12px}
     .status-dot{width:22px;height:22px;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:800;background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border-light);flex-shrink:0;transition:background .3s,color .3s,border-color .3s}
     .analysis-status[data-state=waiting] .status-dot{background:var(--surface-2);color:var(--text-muted)}
-    .analysis-status[data-state=review] .status-dot{background:var(--warning);border-color:var(--warning);color:#fff}
+    .analysis-status[data-state=review] .status-dot{background:var(--danger);border-color:var(--danger);color:#fff}
     .analysis-status[data-state=critical] .status-dot{background:var(--danger);border-color:var(--danger);color:#fff}
     .analysis-status[data-state=ready] .status-dot{background:var(--success);border-color:var(--success);color:#fff}
     .detection-name{font-size:13px;font-weight:700}
     .detection-meta{font-size:10px;color:var(--text-muted);margin-top:2px}
     .confidence{font-size:10px;font-weight:700;transition:color .3s}
     .analysis-status[data-state=ready] .confidence{color:var(--success)}
-    .analysis-status[data-state=review] .confidence{color:var(--warning)}
+    .analysis-status[data-state=review] .confidence{color:var(--danger-ink)}
     .analysis-status[data-state=critical] .confidence{color:var(--danger-ink)}
 
     .summary{padding:0 18px 14px}
@@ -165,14 +173,14 @@
     .summary-item strong{margin-left:auto;font-size:9px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:45%}
     .summary-item.ok strong{color:var(--success)}
     .summary-item.missing strong{color:var(--danger-ink)}
-    .summary-item.review strong{color:var(--warning)}
+    .summary-item.review strong{color:var(--danger-ink)}
     .summary-item.critical strong{color:var(--danger-ink)}
-    .summary-item.review{border-color:var(--warning)}
     .summary-item.missing{border-color:var(--danger)}
+    .summary-item.review{border-color:var(--danger)}
     .summary-item.critical{border-color:var(--danger);background:var(--danger-soft)}
     .summary-status{width:17px;height:17px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:900;flex-shrink:0;border:1.5px solid currentColor;line-height:1}
     .summary-item.ok .summary-status{color:var(--success)}
-    .summary-item.review .summary-status{color:var(--warning)}
+    .summary-item.review .summary-status{color:var(--danger)}
     .summary-item.missing .summary-status{color:var(--danger)}
     .summary-item.critical .summary-status{color:var(--danger)}
     .summary-empty{font-size:11px;color:var(--text-muted);padding:6px 0}
@@ -203,14 +211,14 @@
     .banner{margin:0 18px 10px;padding:10px 14px;border-radius:14px;font-size:10px;opacity:0;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,max-height .3s ease,padding .25s ease,margin .25s ease;max-height:0;overflow:hidden;visibility:hidden}
     .banner.show{opacity:1;transform:translateY(0);max-height:300px;visibility:visible;padding:10px 14px;margin:0 18px 10px}
     .banner ul{margin:4px 0 0 16px}
-    .banner.warn{background:var(--warning-soft);border:1px solid #f2d38a;color:#8a650d}
-    .dark .banner.warn{color:#e5c37a;border-color:#5c4a1e}
-    .banner.error,.banner.critical{background:var(--danger-soft);border:1px solid var(--danger);color:var(--danger-ink)}
+    /* Unified attention styling: warn / error / critical all share the same #ef4444 family. */
+    .banner.warn,
+    .banner.error,
+    .banner.critical{background:var(--danger-soft);border:1px solid var(--danger);color:var(--danger-ink)}
     .preview{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
     .chip{font:10px monospace;background:var(--surface);border:1px solid var(--border-light);border-radius:8px;padding:3px 8px;color:var(--text-secondary);transition:background .2s,border-color .2s,color .2s}
     .chip b{color:var(--accent-dark)}
-    .chip.warn{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
-    .dark .chip.warn{background:#3a1c1c;color:#f0a0a0;border-color:#5c2a2a}
+    .chip.warn{border-color:var(--danger);color:var(--danger-ink);background:var(--danger-soft)}
 
     .action-bar{display:flex;align-items:center;gap:8px;padding:0 18px;margin-top:2px;flex-wrap:wrap}
     .primary-btn,.copy-only,.btn-clear,.danger-btn{border:0;border-radius:14px;padding:11px 18px;font-size:11px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s,opacity .2s}
@@ -288,38 +296,76 @@
     @media(max-width:750px){.tabs{flex-wrap:wrap;overflow:visible;padding:6px}.tabs.overflowing::after{display:none}}
     @media(max-width:600px){body{padding:10px}.card-header{padding:16px 18px}.card-body{padding:16px 14px}.workspace-title{font-size:22px}.field-summary{grid-template-columns:1fr}.action-bar{flex-wrap:wrap}.primary-btn{flex:1}.main-grid{gap:14px}}
 
-    /* ---------- Wide-screen layout (>=1400px) ---------- */
+    /* ---------- Wide-screen layout (>=1400px) ----------
+       Queue + History share the left sidebar column; the sidebar sizes
+       to its own content so no gap appears beneath the Queue panel.
+       Header / hero spacing is tightened so Generate & Copy and the
+       Ticket Preview reach the fold on a standard laptop. */
     @media (min-width:1400px){
       .app-shell{max-width:min(96vw, 1500px)}
+
+      /* Tighter header — read-once branding only. */
+      .card-header{padding:12px 22px}
+      .brand{gap:10px}
+      .brand-mark{width:32px;height:32px;border-radius:11px;font-size:15px}
+      .brand h1{font-size:18px}
+      .brand p{display:none}
+      .theme-toggle,.pip-btn{width:34px;height:34px;font-size:14px}
+
       .card-body{
+        padding:14px 22px 20px;
         display:grid;
         grid-template-columns: 340px minmax(0, 1fr);
         grid-template-areas:
           "head    head"
           "detect  detect"
           "tabs    tabs"
-          "queue   main"
-          "queue   confirm"
-          "queue   output"
-          "queue   history";
-        gap:18px;
+          "side    main"
+          "side    confirm"
+          "side    output";
+        gap:14px;
         align-items:start;
       }
-      .card-body > .workspace-top{grid-area:head;margin-bottom:0}
-      .card-body > .detect-bar{grid-area:detect;margin-bottom:0}
+
+      .card-body > .workspace-top{grid-area:head;margin-bottom:0;align-items:center}
+      .card-body > .workspace-top .eyebrow{display:none}
+      .card-body > .workspace-top .workspace-title{font-size:18px;margin-top:0}
+      .card-body > .workspace-top .workspace-subtitle{display:none}
+
+      .card-body > .detect-bar{grid-area:detect;margin-bottom:0;padding:10px 14px}
+
       .card-body > .tabs-wrap{grid-area:tabs;margin-bottom:0}
-      .card-body > #queuePanel{grid-area:queue;margin-bottom:0}
+      .card-body > .tabs-wrap .tabs-label{margin-bottom:4px}
+
+      /* Sidebar: Queue then History stacked, flex column so the whole
+         column shrinks to fit its content rather than stretching to
+         match the main column. */
+      .card-body > .sidebar{
+        grid-area:side;
+        align-self:start;
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+      }
+      .card-body > .sidebar > .queue-panel{margin-bottom:0}
+      .card-body > .sidebar > #historySection{margin-top:0}
+
       .card-body > .main-grid{grid-area:main}
       .card-body > #confirmBar{grid-area:confirm;margin-top:0}
       .card-body > .output-panel{grid-area:output;margin-top:0}
-      .card-body > #historySection{grid-area:history;margin-top:0;padding-top:12px}
+
+      /* Shave extra vertical space inside the input panel only — the
+         working textareas / fields keep their sizes. */
+      .main-grid .kbd-hint{display:none}
+      .main-grid .sla-info{margin-bottom:8px}
+      .main-grid .dynamic-fields{margin-bottom:8px}
     }
     @media (min-width:1800px){
       .app-shell{max-width:min(96vw, 1780px)}
       .card-body{grid-template-columns: 380px minmax(0, 1fr)}
     }
 
-    /* ---------- Compact PiP mode (highest priority; wins over media queries) ---------- */
+    /* ---------- Compact PiP mode (wins over media queries) ---------- */
     html.pip-mode body{padding:6px}
     html.pip-mode .card{border-radius:18px}
     html.pip-mode .card-header{padding:10px 14px}
@@ -455,16 +501,34 @@
       <div class="tabs" id="tabs" role="tablist" aria-labelledby="tabsLabel"></div>
     </div>
 
-    <section class="panel queue-panel" id="queuePanel">
-      <div class="queue-head">
-        <div>
-          <div class="queue-title">Queue <span class="queue-count" id="queueCount"></span></div>
-          <div class="queue-caption">Stage several transactions and work through them back to back.</div>
+    <!-- Sidebar wrapper: at narrow widths it's display:contents (a passthrough),
+         at wide widths it becomes the left column holding Queue + History. -->
+    <div class="sidebar">
+      <section class="panel queue-panel" id="queuePanel">
+        <div class="queue-head">
+          <div>
+            <div class="queue-title">Queue <span class="queue-count" id="queueCount"></span></div>
+            <div class="queue-caption">Stage several transactions and work through them back to back.</div>
+          </div>
+          <button type="button" class="icon-btn" id="queueClear" title="Clear queue" aria-label="Clear queue">✕</button>
         </div>
-        <button type="button" class="icon-btn" id="queueClear" title="Clear queue" aria-label="Clear queue">✕</button>
+        <div class="queue-list" id="queueList"></div>
+      </section>
+
+      <div class="history-section" id="historySection">
+        <div class="history-header" id="historyHeader">
+          <h3>Recent tickets <span class="count" id="historyCount"></span> <span class="history-toggle-icon">▾</span></h3>
+          <button class="history-clear" id="historyClearBtn" type="button">Clear history</button>
+        </div>
+        <div class="inline-confirm" id="historyConfirm" role="alertdialog" aria-label="Confirm clearing history">
+          <span>Clear all saved tickets? This can't be undone.</span>
+          <span class="spacer"></span>
+          <button type="button" class="danger-btn" id="historyYes">Clear all</button>
+          <button type="button" class="btn-clear" id="historyNo">Cancel</button>
+        </div>
+        <div class="history-list" id="historyList"></div>
       </div>
-      <div class="queue-list" id="queueList"></div>
-    </section>
+    </div>
 
     <div class="main-grid">
       <section class="panel input-panel">
@@ -543,20 +607,6 @@
       <div style="position:relative"><textarea id="output" rows="7" readonly placeholder="Your formatted ticket will appear here…"></textarea></div>
     </section>
 
-    <div class="history-section" id="historySection">
-      <div class="history-header" id="historyHeader">
-        <h3>Recent tickets <span class="count" id="historyCount"></span> <span class="history-toggle-icon">▾</span></h3>
-        <button class="history-clear" id="historyClearBtn" type="button">Clear history</button>
-      </div>
-      <div class="inline-confirm" id="historyConfirm" role="alertdialog" aria-label="Confirm clearing history">
-        <span>Clear all saved tickets? This can't be undone.</span>
-        <span class="spacer"></span>
-        <button type="button" class="danger-btn" id="historyYes">Clear all</button>
-        <button type="button" class="btn-clear" id="historyNo">Cancel</button>
-      </div>
-      <div class="history-list" id="historyList"></div>
-    </div>
-
     <div id="toastMsg" class="toast" role="status">Copied</div>
   </div>
 </div></div>
@@ -564,20 +614,14 @@
 (function(){
 // ============================================================
 // Shared document reference + PiP state
-// ------------------------------------------------------------
-// Shadow the global `document` inside this IIFE. Whenever the app is hosted
-// in a different document (i.e. inside the Document PiP window) we simply
-// reassign this binding, and every existing document.getElementById(...) /
-// querySelector(...) / addEventListener(...) in this file transparently
-// targets the right document — no other code changes needed.
 // ============================================================
 const openerDocument = window.document;
 let document = openerDocument;
 
-let pipWindow = null;        // the Window returned by documentPictureInPicture
-let pipPlaceholder = null;   // dashed card that sits in the main tab while floating
+let pipWindow = null;
+let pipPlaceholder = null;
 const appNode = document.getElementById('app');
-const originalAppParent = appNode.parentNode;  // captured once, in the opener
+const originalAppParent = appNode.parentNode;
 
 // -------- UTILITY --------
 function esc(str){ if(!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -855,7 +899,6 @@ function saveHistory(arr){ try{ localStorage.setItem('txf_history', JSON.stringi
 function loadQueue(){ try{ return JSON.parse(localStorage.getItem('txf_queue')||'[]'); }catch(e){ return []; } }
 function saveQueue(arr){ try{ localStorage.setItem('txf_queue', JSON.stringify(arr)); }catch(e){} }
 
-// PiP size persistence
 const PIP_SIZE_DEFAULT = { width: 540, height: 780 };
 function loadPipSize(){
   try {
@@ -1092,7 +1135,6 @@ function createBankDropdown(containerId, fieldId){
   }
   inp.addEventListener('input', function(){ hidden.value=''; render(inp.value); list.classList.toggle('show', inp.value.trim()!==''); });
   inp.addEventListener('focus', function(){ render(inp.value); list.classList.add('show'); });
-  // Outside-click close is handled by the global handleDocClick (both docs).
   render('');
   wrap.append(inp, hidden, list); container.appendChild(wrap);
   return { getValue:function(){ return hidden.value; }, input:inp, hidden:hidden };
@@ -1556,6 +1598,7 @@ function generate(){
     warnBanner.innerHTML='<strong>⛔ Duplicate reference:</strong> "'+esc(ref)+'" was already processed.';
     warnBanner.classList.add('show');
   } else if(warns.length){
+    // Unified attention color — soft warnings now share the same #ef4444 family.
     warnBanner.classList.remove('critical');
     warnBanner.innerHTML='<strong>⚠ Format check:</strong><ul>'+warns.map(function(m){ return '<li>'+esc(m)+'</li>'; }).join('')+'</ul>';
     warnBanner.classList.add('show');
@@ -1633,8 +1676,6 @@ function generateAndCopy(){
   navigator.clipboard.writeText(result).then(function(){ showToast('Copied'); }).catch(function(){ showToast('Output ready'); });
   showConfirmation(result, parsed, cat);
 
-  // Only auto-advance when the just-generated transaction actually came from
-  // the queue. A direct one-off paste leaves staged items untouched.
   const cameFromQueue = !!queueActiveId;
   if(cameFromQueue){
     removeQueueItem(queueActiveId);
@@ -1866,9 +1907,6 @@ function buildPlaceholder(){
   return el;
 }
 
-// FIX: the placeholder must never exist inside the PiP document. We always
-// rebuild it in the opener document, and always reattach it to the cached
-// original parent — regardless of what happened to #app.
 function ensurePipPlaceholder(){
   if(pipPlaceholder && pipPlaceholder.ownerDocument !== openerDocument){
     pipPlaceholder = null;
@@ -1907,7 +1945,6 @@ async function openPip(){
   }
   pipWindow = win;
 
-  // Copy styles from the opener into the PiP document <head>.
   openerDocument.querySelectorAll('style').forEach(function(styleEl){
     win.document.head.appendChild(styleEl.cloneNode(true));
   });
@@ -1915,30 +1952,22 @@ async function openPip(){
     win.document.head.appendChild(linkEl.cloneNode(true));
   });
 
-  // Preserve the current theme class on <html>, then add the compact-mode flag.
   win.document.documentElement.className = openerDocument.documentElement.className;
   win.document.documentElement.classList.add('pip-mode');
   win.document.title = openerDocument.title || 'TxForm';
 
-  // Show the placeholder in the main tab, then MOVE #app into the PiP document.
   showPlaceholder();
   win.document.body.appendChild(appNode);
 
-  // Switch the shared document binding so all lookups target the PiP doc.
   document = win.document;
-
-  // Attach the shared handlers to the PiP document as well. The opener keeps
-  // its copies so the placeholder stays interactive.
   attachDocListeners(win.document);
 
-  // Header button becomes a "return to tab" affordance.
   pipBtn.classList.add('pip-active');
   pipBtn.textContent = '⤢';
   pipBtn.title = 'Return TxForm to this tab';
   pipBtn.setAttribute('aria-label','Return TxForm to this tab');
   pipBtn.removeAttribute('aria-disabled');
 
-  // Re-sync layout with the PiP width; persist size when the user resizes.
   win.addEventListener('resize', function(){
     checkTabOverflow();
     clearTimeout(pipResizeTimer);
@@ -1969,27 +1998,21 @@ function handlePipClosed(){
   if(!pipWindow) return;
   const win = pipWindow;
 
-  // Save final size before we lose the window reference.
   try { savePipSize(win.innerWidth, win.innerHeight); } catch(e){}
 
   pipWindow = null;
-
-  // Restore the shared document binding first.
   document = openerDocument;
 
-  // Defensive: if the placeholder somehow ended up outside the opener, rebuild.
   if(pipPlaceholder && pipPlaceholder.ownerDocument !== openerDocument){
     pipPlaceholder = null;
   }
 
-  // Move #app back into .app-shell, before the placeholder.
   if(appNode){
     ensurePipPlaceholder();
     originalAppParent.insertBefore(appNode, pipPlaceholder);
   }
   hidePlaceholder();
 
-  // Restore the header button.
   pipBtn.classList.remove('pip-active');
   pipBtn.textContent = '⧉';
   if(pipSupported){
